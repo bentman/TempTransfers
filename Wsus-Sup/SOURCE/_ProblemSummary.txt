@@ -1,0 +1,49 @@
+Summary of Reported Symptoms (in order)
+1.	Initial Issue
+o	SCCM Software Update Point (SUP) in QA and Prod stopped syncing monthly updates.
+o	Errors observed: Sync failed: WSUS server not configured. Please refer to WCM.log for configuration error details.. Source: CWSyncMgr::DoSync
+o	WCM.log showed: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it :8531
+2.	Network Check
+o	Test-NetConnection confirmed port 8531 responds, so network connectivity was fine.
+3.	Registry Review
+o	WSUS registry indicated:
+	UsingSSL=0 (SSL disabled)
+	PortNumber=8530 (HTTP)
+o	SCCM SUP was trying to connect via HTTPS (8531), causing mismatch.
+4.	WSUSService Behavior
+o	Get-Service wsusservice → service not found.
+o	sc query wsusservice → “Access Denied.”
+o	Task Manager showed WsusService.exe running, but:
+	Service not visible in services.msc.
+	Cannot be managed via PowerShell or SCM.
+o	Indicates WSUSService process exists but is detached from Service Control Manager.
+5.	WSUS Console
+o	WSUS console would not launch because WSUSService was not running (or not registered).
+o	When accessible, WSUS was misconfigured to sync from itself instead of Microsoft Update.
+6.	Repeated Remediation Attempts
+o	WSUS and SUP roles were removed and re-added multiple times in both QA and Prod.
+o	Postinstall often failed with: Cannot open WSUSService service on computer '.'. Access is denied
+o	Even after reinstall, WSUSService remained unmanageable.
+7.	Database Status
+o	SUSDB was intact and on the same server.
+o	Last month’s sync was successful, confirming WSUS worked previously.
+8.	Microsoft Engagement Findings
+o	Root cause: WSUS misconfiguration and incomplete cleanup.
+o	Full teardown and cleanup required:
+	Remove WSUS features and roles.
+	Delete WSUS registry keys, folders, IIS sites, SUSDB.
+	Fix permissions on %windir%\Temp and ASP.NET temp folders.
+	Recreate missing registry entries under HKLM\Software\Microsoft\Update Services\Server\Setup.
+	Run wsusutil postinstall from commandline.
+o	After this, SUP sync resumed successfully.
+9.	Current State
+o	Production SUP is syncing now, but WSUSService still:
+	Cannot be queried or controlled via SCM.
+	Exists only as a running process.
+o	Concern: After reboot or next sync cycle, WSUS will break again because service registration is corrupted.
+________________________________________
+Key Underlying Problem
+•	WSUSService is not properly registered with SCM despite the binary running.
+•	This prevents normal management, health checks, and postinstall tasks.
+•	Repeated WSUS reinstalls without full cleanup leave orphaned registry entries and broken ACLs.
+•	SCCM and WSUS console depend on a healthy WSUSService for long-term stability.

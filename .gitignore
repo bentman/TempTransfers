@@ -1,0 +1,50 @@
+# AI Assistant Rules and Analysis Files
+# These files are environment/user-specific and should not be committed
+
+# WARP assistant rules
+WARP.md
+warp.md
+
+# AI analysis files (all subdirectories)
+Claude.md
+claude.md
+OpenAI.md
+openai.md
+Qwen.md
+qwen.md
+
+# Case-insensitive pattern matching for subdirectories
+**/WARP.md
+**/warp.md
+**/Claude.md
+**/claude.md
+**/OpenAI.md
+**/openai.md
+**/Qwen.md
+**/qwen.md
+
+# Common output directories
+**/C:/Temp/
+**/C:/Logs/
+**/.tmp/
+**/.backup/
+
+# PowerShell transcript logs
+*transcript*.txt
+
+# Assessment/diagnostic output directories (timestamped backups)
+**/*_PreFix_*/
+**/*_Assessment_*/
+**/*_Backup_*/
+**/*_Nuclear_Backup_*/
+
+# Sensitive configuration exports
+**/*_Config_Working.xml
+**/*_Registry_Before.xml
+**/*_ACL_Before.xml
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
