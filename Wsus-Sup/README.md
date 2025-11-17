@@ -12,27 +12,30 @@
 
 ---
 
-## Research Findings Correlation
+## Technical Analysis
 
-### All Three AI Assessments Agree On:
+### Primary Issue
 
-1. **Primary Issue**: Service Control Manager database corruption for WSUSService
-2. **Symptoms Pattern**:
-   - `WsusService.exe` running as process ✓
-   - Service NOT visible in `Get-Service` ✗
-   - `sc query wsusservice` returns "Access Denied" ✗
-   - WSUS functional NOW but won't survive reboot ⚠
+Service Control Manager (SCM) database corruption for WSUSService, resulting in:
 
-3. **Root Causes**:
-   - ACL corruption on `HKLM\SYSTEM\CurrentControlSet\Services\WSUSService`
-   - Orphaned service registry entries from incomplete uninstalls
-   - `wsusutil postinstall` created process but couldn't register service
-   - Broken permissions on temp folders and service keys
+**Symptoms Pattern**:
+- `WsusService.exe` running as process ✓
+- Service NOT visible in `Get-Service` ✗
+- `sc query wsusservice` returns "Access Denied" ✗
+- WSUS functional NOW but won't survive reboot ⚠
 
-4. **Why Microsoft's Fix Was Incomplete**:
-   - Got sync working (process-level fix)
-   - Did NOT repair service registration (SCM-level fix)
-   - Will break again on reboot
+### Root Causes Identified
+
+1. **Registry ACL Corruption**: Service registry key (`HKLM\SYSTEM\CurrentControlSet\Services\WSUSService`) has incorrect owner/permissions
+2. **Orphaned Service Entries**: Incomplete uninstall/reinstall cycles left remnants in SCM database
+3. **Process vs Service Registration**: `wsusutil postinstall` created IIS-hosted process but failed to register Windows Service
+4. **Temp Folder Permissions**: ASP.NET temp folder ACLs prevent proper service initialization
+
+### Why Previous Repairs Were Incomplete
+
+- Addressed process-level functionality (WSUS sync works)
+- Did NOT repair SCM service registration
+- Service won't persist after reboot without proper registration
 
 ### Key Technical Details
 
@@ -351,15 +354,20 @@ A: Not needed. Native tools (takeown/icacls/sc.exe) sufficient.
 
 ## Support Resources
 
-- Problem Summary: `_ProblemSummary.txt`
-- Claude Assessment: `Claude.md`
-- OpenAI Assessment: `OpenAI.md`
-- Qwen Assessment: `Qwen.md`
-- Microsoft Docs: Search "WSUS wsusutil postinstall"
+### Microsoft Documentation
+- [WSUS Administration](https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/manage/wsus-tools)
+- [Configuration Manager Software Updates](https://learn.microsoft.com/en-us/mem/configmgr/sum/)
+- [WSUS Best Practices](https://learn.microsoft.com/en-us/troubleshoot/mem/configmgr/update-management/windows-server-update-services-best-practices)
+- [Troubleshoot Software Update Management](https://learn.microsoft.com/en-us/troubleshoot/mem/configmgr/update-management/troubleshoot-software-update-management)
+
+### Diagnostic Tools
+- WSUS Console: `%ProgramFiles%\Update Services\AdministrationSnapIn\Microsoft.UpdateServices.UI.AdminApiAccess.dll`
 - SCCM Logs: `C:\Program Files\Microsoft Configuration Manager\Logs\WCM.log`
+- Event Viewer: Application log → Sources: `WsusService`, `WsusSetup`
+- PowerShell: `Get-WindowsFeature -Name *WSUS*`
 
 ---
 
-**Version**: 1.0  
-**Last Updated**: 2025-11-14  
-**Compiled from**: Claude, OpenAI, Qwen AI assessments + Microsoft best practices
+**Version**: 1.1  
+**Last Updated**: 2025-11-17  
+**Based on**: Microsoft best practices and community validation
