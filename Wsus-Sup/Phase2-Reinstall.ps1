@@ -14,24 +14,34 @@ $backupDirs = Get-ChildItem -Path "C:\Temp" -Filter "WSUS_Nuclear_Backup_*" -Dir
 
 if ($backupDirs.Count -eq 0) {
     Write-Host "⚠ WARNING: No backup configuration found" -ForegroundColor Yellow
-    Write-Host "  Using default values`n" -ForegroundColor Yellow
+    Write-Host "  Using SSL-only default values`n" -ForegroundColor Yellow
     
     $wsusConfig = @{
         ContentDir = "C:\WSUS"
-        PortNumber = 8530
-        UsingSSL = 0
+        PortNumber = 8531
+        UsingSSL = 1
+        EnforceSSLOnly = $true
     }
 } else {
     $latestBackup = $backupDirs[0].FullName
     Write-Host "Using configuration from: $latestBackup`n" -ForegroundColor Gray
     
     $wsusConfig = Import-Clixml "$latestBackup\WSUS_Config.xml"
+    
+    # Enforce SSL-only configuration regardless of saved configuration
+    if ($wsusConfig.EnforceSSLOnly -eq $true) {
+        Write-Host " SSL-Only enforcement enabled - forcing SSL configuration" -ForegroundColor Yellow
+        $wsusConfig.PortNumber = 8531
+        $wsusConfig.UsingSSL = 1
+    }
 }
 
 Write-Host "Configuration:" -ForegroundColor Yellow
 Write-Host "  Content Directory: $($wsusConfig.ContentDir)" -ForegroundColor Gray
 Write-Host "  Port: $($wsusConfig.PortNumber)" -ForegroundColor Gray
-Write-Host "  Using SSL: $($wsusConfig.UsingSSL)`n" -ForegroundColor Gray
+Write-Host "  Using SSL: $($wsusConfig.UsingSSL)" -ForegroundColor Gray
+Write-Host "  SSL-Only Enforcement: $($wsusConfig.EnforceSSLOnly)" -ForegroundColor Gray
+Write-Host ""
 
 # ========================================
 # PHASE 2.1: INSTALL WSUS FEATURES
@@ -161,7 +171,7 @@ if ($wsusConfig.UsingSSL -eq 1) {
 }
 
 # Test 5: WSUS API
-Write-Host "`n  Test 5: WSUS API access..." -NoNewline
+Write-Host "`n Test 5: WSUS API access..." -NoNewline
 try {
     $port = if ($wsusConfig.UsingSSL -eq 1) { 8531 } else { 8530 }
     $useSSL = $wsusConfig.UsingSSL -eq 1
@@ -173,6 +183,27 @@ try {
 } catch {
     Write-Host " FAIL ✗" -ForegroundColor Red
     Write-Host "    Error: $_" -ForegroundColor Red
+}
+
+# Test 6: SSL-Only Configuration Validation
+Write-Host "`n  Test 6: SSL-Only configuration validation..." -NoNewline
+try {
+    # Check registry to ensure UsingSSL is set correctly
+    $regUsingSSL = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Update Services\Server\Setup" -Name UsingSSL -ErrorAction SilentlyContinue).UsingSSL
+    $regPortNumber = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Update Services\Server\Setup" -Name PortNumber -ErrorAction SilentlyContinue).PortNumber
+    
+    if ($regUsingSSL -eq 1 -and $regPortNumber -eq 8531) {
+        Write-Host " PASS ✓" -ForegroundColor Green
+        Write-Host "    Registry UsingSSL: $regUsingSSL (expected: 1)" -ForegroundColor Gray
+        Write-Host "    Registry PortNumber: $regPortNumber (expected: 8531)" -ForegroundColor Gray
+    } else {
+        Write-Host " FAIL ✗" -ForegroundColor Red
+        Write-Host "    Registry UsingSSL: $regUsingSSL (expected: 1)" -ForegroundColor Gray
+        Write-Host "    Registry PortNumber: $regPortNumber (expected: 8531)" -ForegroundColor Gray
+    }
+} catch {
+    Write-Host " FAIL ✗" -ForegroundColor Red
+    Write-Host "    Error checking registry: $_" -ForegroundColor Red
 }
 
 # ========================================

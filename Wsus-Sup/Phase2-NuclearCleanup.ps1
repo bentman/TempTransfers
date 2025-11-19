@@ -39,13 +39,34 @@ $wsusConfig = @{
     PortNumber = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Update Services\Server\Setup" -Name PortNumber -ErrorAction SilentlyContinue).PortNumber
     UsingSSL = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Update Services\Server\Setup" -Name UsingSSL -ErrorAction SilentlyContinue).UsingSSL
 }
+
+# Detect misconfigured SSL state: UsingSSL=0 but expecting HTTPS (port 8531)
+$isMisconfigured = $false
+if ($wsusConfig.UsingSSL -eq 0 -and $wsusConfig.PortNumber -eq 8531) {
+    Write-Host "  ⚠ SSL MISMATCH DETECTED: UsingSSL=0 but PortNumber=8531 (HTTPS)" -ForegroundColor Red
+    Write-Host "  This indicates a misconfigured state that will be corrected." -ForegroundColor Yellow
+    $isMisconfigured = $true
+} elseif ($wsusConfig.UsingSSL -eq 0) {
+    Write-Host "  ℹ Current configuration: HTTP only (UsingSSL=0)" -ForegroundColor Gray
+} elseif ($wsusConfig.UsingSSL -eq 1) {
+    Write-Host "  ℹ Current configuration: SSL enabled (UsingSSL=1)" -ForegroundColor Gray
+}
+
+# Add SSL-only enforcement flag to configuration
+$wsusConfig | Add-Member -NotePropertyName "EnforceSSLOnly" -NotePropertyValue $true
+
 $wsusConfig | Export-Clixml "$backupDir\WSUS_Config.xml"
 
 Write-Host "  Content Directory: $($wsusConfig.ContentDir)" -ForegroundColor Gray
 Write-Host "  Database Server: $($wsusConfig.DatabaseServer)" -ForegroundColor Gray
 Write-Host "  Database Name: $($wsusConfig.DatabaseName)" -ForegroundColor Gray
 Write-Host "  Port: $($wsusConfig.PortNumber)" -ForegroundColor Gray
-Write-Host "  Using SSL: $($wsusConfig.UsingSSL)`n" -ForegroundColor Gray
+Write-Host "  Using SSL: $($wsusConfig.UsingSSL)" -ForegroundColor Gray
+Write-Host "  SSL-Only Enforcement: $($wsusConfig.EnforceSSLOnly)" -ForegroundColor Gray
+if ($isMisconfigured) {
+    Write-Host "  Misconfigured State: YES" -ForegroundColor Red
+}
+Write-Host ""
 
 # ========================================
 # PHASE 2.2: STOP SERVICES

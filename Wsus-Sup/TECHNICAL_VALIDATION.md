@@ -178,6 +178,11 @@ icacls "%windir%\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files" /
 **Root Cause**: SUP SSL configuration doesn't match WSUS registry `UsingSSL` value
 **Resolution**: ✅ Configuration alignment documented in post-repair steps
 
+### Issue: Misconfigured SSL State (UsingSSL=0 with Port 8531)
+**Symptom**: Registry shows `UsingSSL=0` but expecting HTTPS on port 8531
+**Root Cause**: Previous incomplete SSL configuration attempts left inconsistent state
+**Resolution**: ✅ Nuclear cleanup detects this state and enforces SSL-only configuration during reinstall
+
 ### Issue: Access Denied on Service Operations
 **Symptom**: `sc query wsusservice` fails with Access Denied
 **Root Cause**: TrustedInstaller or SYSTEM owns service key with restrictive DACL

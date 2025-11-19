@@ -141,18 +141,20 @@ Service Control Manager (SCM) database corruption for WSUSService, resulting in:
 
 **What it does**:
 1. Captures current config for restoration
-2. Stops IIS and all WSUS processes
-3. Uninstalls WSUS Windows Features
-4. Removes all WSUS directories (Program Files, content dir)
-5. Removes IIS sites and app pools
-6. Cleans ALL registry keys:
+2. **NEW**: Detects misconfigured SSL state (UsingSSL=0 but PortNumber=8531) and flags for correction
+3. **NEW**: Adds SSL-Only enforcement flag to ensure HTTPS configuration during reinstall
+4. Stops IIS and all WSUS processes
+5. Uninstalls WSUS Windows Features
+6. Removes all WSUS directories (Program Files, content dir)
+7. Removes IIS sites and app pools
+8. Cleans ALL registry keys:
    - `HKLM\SOFTWARE\Microsoft\Update Services`
    - `HKLM\SYSTEM\CurrentControlSet\Services\WSUSService`
    - All ControlSet variations
-7. Fixes temp folder permissions (per Microsoft guidance):
+9. Fixes temp folder permissions (per Microsoft guidance):
    - `%windir%\Temp`
    - ASP.NET temp folders
-8. Prompts for reboot
+10. Prompts for reboot
 
 **⚠ CRITICAL**: Must reboot after cleanup to clear SCM/IIS/WCF caches
 
@@ -169,17 +171,18 @@ Service Control Manager (SCM) database corruption for WSUSService, resulting in:
 
 **What it does**:
 1. Loads saved configuration from cleanup phase
-2. Reinstalls WSUS Windows Features
-3. Creates content directory
-4. Runs `wsusutil postinstall` with saved config
-5. Verifies service registration (5 validation tests)
-6. Provides next-steps checklist
+2. **NEW**: Enforces SSL-only configuration regardless of saved settings (UsingSSL=1, Port=8531)
+3. Reinstalls WSUS Windows Features
+4. Creates content directory
+5. Runs `wsusutil postinstall` with SSL configuration
+6. Verifies service registration (6 validation tests including SSL validation)
+7. Provides next-steps checklist
 
 **Post-install actions**:
 1. Configure WSUS console (upstream server, products, classifications)
 2. In SCCM Console:
    - Remove and re-add Software Update Point role
-   - Match SSL setting to WSUS (currently HTTP/8530)
+   - **Ensure SSL setting matches WSUS (SSL enabled for port 8531)**
    - Verify port configuration
 3. Initiate manual SUP sync
 4. Monitor WCM.log and WSyncMgr.log
