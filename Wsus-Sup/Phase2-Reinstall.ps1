@@ -4,9 +4,42 @@
 
 #Requires -RunAsAdministrator
 
+$hostname = hostname
+$timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+$outputFile = "C:\Temp\WSUS-REINSTALL_${hostname}-${timestamp}.txt"
+
 Write-Host "`n========================================" -ForegroundColor Cyan
 Write-Host "Phase 2: WSUS Reinstallation" -ForegroundColor Cyan
 Write-Host "========================================`n" -ForegroundColor Cyan
+
+# Initialize report content
+$reportContent = @()
+$reportContent += "=" * 80
+$reportContent += "WSUS REINSTALLATION REPORT"
+$reportContent += "Server: $hostname"
+$reportContent += "Date/Time: $(Get-Date)"
+$reportContent += "Script: Phase2-Reinstall.ps1"
+$reportContent += "=" * 80
+$reportContent += ""
+
+# Check for Configuration Manager site code (if SCCM is installed)
+$siteCode = $null
+try {
+    # Try to get the site code from registry if SCCM client is installed
+    $sccmRegPath = "HKLM:\SOFTWARE\Microsoft\CCM"
+    if (Test-Path $sccmRegPath) {
+        $siteCode = (Get-ItemProperty $sccmRegPath -ErrorAction SilentlyContinue).'CM Site Code'
+    }
+    # Alternative registry location for site code
+    if (-not $siteCode) {
+        $sccmRegPath2 = "HKLM:\SOFTWARE\Microsoft\SMS\Identification"
+        if (Test-Path $sccmRegPath2) {
+            $siteCode = (Get-ItemProperty $sccmRegPath2 -ErrorAction SilentlyContinue).SiteCode
+        }
+    }
+} catch {
+    # If we can't get the site code, continue without it
+}
 
 # Find the most recent backup
 $backupDirs = Get-ChildItem -Path "C:\Temp" -Filter "WSUS_Nuclear_Backup_*" -Directory | 
@@ -22,6 +55,15 @@ if ($backupDirs.Count -eq 0) {
         UsingSSL = 1
         EnforceSSLOnly = $true
     }
+    $reportContent += "1. CONFIGURATION SOURCE:"
+    $reportContent += "   Status: NO BACKUP FOUND - USING DEFAULT SSL-ONLY VALUES"
+    $reportContent += "   Content Directory: C:\WSUS"
+    $reportContent += "   Port Number: 8531 (HTTPS)"
+    $reportContent += "   Using SSL: 1 (Enabled)"
+    if ($siteCode) {
+        $reportContent += "   SCCM Site Code: $siteCode"
+    }
+    $reportContent += ""
 } else {
     $latestBackup = $backupDirs[0].FullName
     Write-Host "Using configuration from: $latestBackup`n" -ForegroundColor Gray
@@ -34,6 +76,20 @@ if ($backupDirs.Count -eq 0) {
         $wsusConfig.PortNumber = 8531
         $wsusConfig.UsingSSL = 1
     }
+    
+    $reportContent += "1. CONFIGURATION SOURCE:"
+    $reportContent += "   Backup Directory: $latestBackup"
+    $reportContent += "   Content Directory: $($wsusConfig.ContentDir)"
+    $reportContent += "   Port Number: $($wsusConfig.PortNumber)"
+    $reportContent += "   Using SSL: $($wsusConfig.UsingSSL)"
+    $reportContent += "   SSL-Only Enforcement: $($wsusConfig.EnforceSSLOnly)"
+    if ($wsusConfig.EnforceSSLOnly -eq $true) {
+        $reportContent += "   SSL Configuration: FORCED TO SSL-ONLY MODE"
+    }
+    if ($siteCode) {
+        $reportContent += "   SCCM Site Code: $siteCode"
+    }
+    $reportContent += ""
 }
 
 Write-Host "Configuration:" -ForegroundColor Yellow
@@ -49,12 +105,21 @@ Write-Host ""
 Write-Host "[Phase 2.1] Installing WSUS features..." -ForegroundColor Yellow
 
 try {
-    Install-WindowsFeature -Name UpdateServices-Services, UpdateServices-DB -IncludeManagementTools -ErrorAction Stop
+    $featureResult = Install-WindowsFeature -Name UpdateServices-Services, UpdateServices-DB -IncludeManagementTools -ErrorAction Stop
     Write-Host "  ✓ WSUS features installed`n" -ForegroundColor Green
+    $reportContent += "2. WSUS FEATURES INSTALLATION:"
+    $reportContent += "   UpdateServices-Services: INSTALLED ✓"
+    $reportContent += "   UpdateServices-DB: INSTALLED ✓"
+    $reportContent += "   IncludeManagementTools: YES"
 } catch {
     Write-Host "  ✗ Installation failed: $_" -ForegroundColor Red
+    $reportContent += "2. WSUS FEATURES INSTALLATION:"
+    $reportContent += "   Status: FAILED ✗"
+    $reportContent += "   Error: $($_.Exception.Message)"
+    $reportContent | Out-File -FilePath $outputFile -Encoding UTF8
     exit 1
 }
+$reportContent += ""
 
 # ========================================
 # PHASE 2.2: CREATE CONTENT DIRECTORY
@@ -66,9 +131,16 @@ $contentDir = if ($wsusConfig.ContentDir) { $wsusConfig.ContentDir } else { "C:\
 if (!(Test-Path $contentDir)) {
     New-Item -Path $contentDir -ItemType Directory -Force | Out-Null
     Write-Host "  ✓ Created: $contentDir`n" -ForegroundColor Green
+    $reportContent += "3. CONTENT DIRECTORY:"
+    $reportContent += "   Path: $contentDir"
+    $reportContent += "   Status: CREATED ✓"
 } else {
     Write-Host "  ✓ Directory exists: $contentDir`n" -ForegroundColor Green
+    $reportContent += "3. CONTENT DIRECTORY:"
+    $reportContent += "   Path: $contentDir"
+    $reportContent += "   Status: ALREADY EXISTS ✓"
 }
+$reportContent += ""
 
 # ========================================
 # PHASE 2.3: RUN POSTINSTALL
@@ -78,6 +150,10 @@ Write-Host "[Phase 2.3] Running wsusutil postinstall..." -ForegroundColor Yellow
 $wsusUtilPath = "C:\Program Files\Update Services\Tools\wsusutil.exe"
 if (!(Test-Path $wsusUtilPath)) {
     Write-Host "  ✗ wsusutil.exe not found at: $wsusUtilPath" -ForegroundColor Red
+    $reportContent += "4. WSUSUTIL POSTINSTALL:"
+    $reportContent += "   wsusutil.exe Path: $wsusUtilPath"
+    $reportContent += "   Status: NOT FOUND ✗"
+    $reportContent | Out-File -FilePath $outputFile -Encoding UTF8
     exit 1
 }
 
@@ -97,6 +173,10 @@ $postinstallResult = & $wsusUtilPath $postinstallArgs.Split(' ') 2>&1
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "  ✓ Postinstall completed successfully`n" -ForegroundColor Green
+    $reportContent += "4. WSUSUTIL POSTINSTALL:"
+    $reportContent += "   Command: wsusutil.exe $postinstallArgs"
+    $reportContent += "   Status: SUCCESS ✓"
+    $reportContent += "   Exit Code: $LASTEXITCODE"
 } else {
     Write-Host "  ✗ Postinstall failed with exit code: $LASTEXITCODE" -ForegroundColor Red
     Write-Host "  Output: $postinstallResult`n" -ForegroundColor Red
@@ -108,8 +188,15 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "  3. Check permissions on content directory" -ForegroundColor Gray
     Write-Host "  4. Verify IIS is running`n" -ForegroundColor Gray
     
+    $reportContent += "4. WSUSUTIL POSTINSTALL:"
+    $reportContent += "   Command: wsusutil.exe $postinstallArgs"
+    $reportContent += "   Status: FAILED ✗"
+    $reportContent += "   Exit Code: $LASTEXITCODE"
+    $reportContent += "   Output: $postinstallResult"
+    $reportContent | Out-File -FilePath $outputFile -Encoding UTF8
     exit 1
 }
+$reportContent += ""
 
 Start-Sleep -Seconds 5
 
@@ -118,16 +205,41 @@ Start-Sleep -Seconds 5
 # ========================================
 Write-Host "[Phase 2.4] Verifying service registration..." -ForegroundColor Yellow
 
+# Get service dependencies for reporting
+$serviceReg = Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\WSUSService" -ErrorAction SilentlyContinue
+$dependencies = $serviceReg | Select-Object -ExpandProperty DependOnService -ErrorAction SilentlyContinue
+
+$reportContent += "5. SERVICE DEPENDENCIES:"
+if ($dependencies) {
+    $reportContent += "   WSUS Service Dependencies: $($dependencies -join ', ')"
+    foreach ($dep in $dependencies) {
+        $depStatus = Get-Service $dep -ErrorAction SilentlyContinue
+        if ($depStatus) {
+            $reportContent += "   - $dep : $($depStatus.Status)"
+        } else {
+            $reportContent += "   - $dep : NOT FOUND"
+        }
+    }
+} else {
+    $reportContent += "   WSUS Service Dependencies: None found in registry"
+}
+$reportContent += ""
+
 # Test 1: Get-Service
 Write-Host "  Test 1: Get-Service..." -NoNewline
 try {
     $service = Get-Service WSUSService -ErrorAction Stop
     Write-Host " PASS ✓" -ForegroundColor Green
-    Write-Host "    Status: $($service.Status)" -ForegroundColor Gray
-    Write-Host "    StartType: $($service.StartType)" -ForegroundColor Gray
+    $reportContent += "6. SERVICE VALIDATION TESTS:"
+    $reportContent += "   Test 1 - Get-Service: PASS ✓"
+    $reportContent += "   Service Status: $($service.Status)"
+    $reportContent += "   Service StartType: $($service.StartType)"
 } catch {
     Write-Host " FAIL ✗" -ForegroundColor Red
     Write-Host "    Error: $_" -ForegroundColor Red
+    $reportContent += "6. SERVICE VALIDATION TESTS:"
+    $reportContent += "   Test 1 - Get-Service: FAIL ✗"
+    $reportContent += "   Error: $($_.Exception.Message)"
 }
 
 # Test 2: sc.exe query
@@ -135,9 +247,12 @@ Write-Host "`n  Test 2: SC Query..." -NoNewline
 $scResult = sc.exe query WSUSService 2>&1
 if ($scResult -match "RUNNING|STOPPED") {
     Write-Host " PASS ✓" -ForegroundColor Green
+    $reportContent += "   Test 2 - SC Query: PASS ✓"
 } else {
     Write-Host " FAIL ✗" -ForegroundColor Red
-    Write-Host "    $scResult" -ForegroundColor Red
+    Write-Host " $scResult" -ForegroundColor Red
+    $reportContent += "   Test 2 - SC Query: FAIL ✗"
+    $reportContent += "   SC Result: $scResult"
 }
 
 # Test 3: Process running
@@ -146,8 +261,12 @@ $process = Get-Process WsusService -ErrorAction SilentlyContinue
 if ($process) {
     Write-Host " PASS ✓" -ForegroundColor Green
     Write-Host "    PID: $($process.Id)" -ForegroundColor Gray
+    $reportContent += "   Test 3 - Process Check: PASS ✓"
+    $reportContent += "   Process ID: $($process.Id)"
 } else {
     Write-Host " FAIL ✗" -ForegroundColor Red
+    $reportContent += "   Test 3 - Process Check: FAIL ✗"
+    $reportContent += "   Process Status: NOT RUNNING"
 }
 
 # Test 4: Network ports
@@ -156,8 +275,10 @@ Write-Host "    Port 8530 (HTTP)..." -NoNewline
 $port8530 = Test-NetConnection -ComputerName localhost -Port 8530 -WarningAction SilentlyContinue
 if ($port8530.TcpTestSucceeded) {
     Write-Host " PASS ✓" -ForegroundColor Green
+    $reportContent += "   Test 4 - Port 8530 (HTTP): PASS ✓"
 } else {
     Write-Host " FAIL ✗" -ForegroundColor Red
+    $reportContent += "   Test 4 - Port 8530 (HTTP): FAIL ✗"
 }
 
 if ($wsusConfig.UsingSSL -eq 1) {
@@ -165,9 +286,13 @@ if ($wsusConfig.UsingSSL -eq 1) {
     $port8531 = Test-NetConnection -ComputerName localhost -Port 8531 -WarningAction SilentlyContinue
     if ($port8531.TcpTestSucceeded) {
         Write-Host " PASS ✓" -ForegroundColor Green
+        $reportContent += "   Test 5 - Port 8531 (HTTPS): PASS ✓"
     } else {
         Write-Host " FAIL ✗" -ForegroundColor Red
+        $reportContent += "   Test 5 - Port 8531 (HTTPS): FAIL ✗"
     }
+} else {
+    $reportContent += "   Test 5 - Port 8531 (HTTPS): SKIPPED (SSL disabled)"
 }
 
 # Test 5: WSUS API
@@ -180,9 +305,14 @@ try {
     $wsusStatus = $wsus.GetStatus()
     Write-Host " PASS ✓" -ForegroundColor Green
     Write-Host "    Database version: $($wsusStatus.DatabaseVersion)" -ForegroundColor Gray
+    $reportContent += "   Test 6 - WSUS API Access: PASS ✓"
+    $reportContent += "   API Port: $port (SSL: $useSSL)"
+    $reportContent += "   Database Version: $($wsusStatus.DatabaseVersion)"
 } catch {
     Write-Host " FAIL ✗" -ForegroundColor Red
     Write-Host "    Error: $_" -ForegroundColor Red
+    $reportContent += "   Test 6 - WSUS API Access: FAIL ✗"
+    $reportContent += "   Error: $($_.Exception.Message)"
 }
 
 # Test 6: SSL-Only Configuration Validation
@@ -196,15 +326,24 @@ try {
         Write-Host " PASS ✓" -ForegroundColor Green
         Write-Host "    Registry UsingSSL: $regUsingSSL (expected: 1)" -ForegroundColor Gray
         Write-Host "    Registry PortNumber: $regPortNumber (expected: 8531)" -ForegroundColor Gray
+        $reportContent += "   Test 7 - SSL Configuration: PASS ✓"
+        $reportContent += "   Registry UsingSSL: $regUsingSSL (expected: 1)"
+        $reportContent += "   Registry PortNumber: $regPortNumber (expected: 8531)"
     } else {
         Write-Host " FAIL ✗" -ForegroundColor Red
         Write-Host "    Registry UsingSSL: $regUsingSSL (expected: 1)" -ForegroundColor Gray
         Write-Host "    Registry PortNumber: $regPortNumber (expected: 8531)" -ForegroundColor Gray
+        $reportContent += "   Test 7 - SSL Configuration: FAIL ✗"
+        $reportContent += "   Registry UsingSSL: $regUsingSSL (expected: 1)"
+        $reportContent += "   Registry PortNumber: $regPortNumber (expected: 8531)"
     }
 } catch {
     Write-Host " FAIL ✗" -ForegroundColor Red
     Write-Host "    Error checking registry: $_" -ForegroundColor Red
+    $reportContent += "   Test 7 - SSL Configuration: FAIL ✗"
+    $reportContent += "   Error checking registry: $_"
 }
+$reportContent += ""
 
 # ========================================
 # PHASE 2.5: SUMMARY
@@ -224,7 +363,16 @@ try {
     $overallSuccess = $false
 }
 
+# Add layman categorization of errors
+$reportContent += "7. SUMMARY AND ERROR CATEGORIZATION:"
+$reportContent += "   Server: $hostname"
+$reportContent += "   Assessment Time: $(Get-Date)"
+$reportContent += ""
+
+$reportContent += "   LAYMAN ERROR CATEGORIES:"
+
 if ($overallSuccess) {
+    $reportContent += "   - OK: WSUS reinstallation successful"
     Write-Host "✓ WSUS reinstallation successful!`n" -ForegroundColor Green
     
     Write-Host "Next steps:" -ForegroundColor Yellow
@@ -238,15 +386,25 @@ if ($overallSuccess) {
     Write-Host "  5. Test reboot after 24 hours of successful operation`n" -ForegroundColor White
     
 } else {
+    $reportContent += "   - ERROR: WSUS reinstallation incomplete"
     Write-Host "✗ WSUS reinstallation incomplete`n" -ForegroundColor Red
     
     Write-Host "Troubleshooting steps:" -ForegroundColor Yellow
     Write-Host "  1. Check Event Viewer > Application log for 'WsusSetup' errors" -ForegroundColor White
-    Write-Host "  2. Review IIS configuration and application pools" -ForegroundColor White
+    Write-Host " 2. Review IIS configuration and application pools" -ForegroundColor White
     Write-Host "  3. Verify SQL Server/WID service is running" -ForegroundColor White
-    Write-Host "  4. Check content directory permissions" -ForegroundColor White
+    Write-Host " 4. Check content directory permissions" -ForegroundColor White
     Write-Host "  5. Review postinstall output above for specific errors`n" -ForegroundColor White
 }
 
+$reportContent += ""
+$reportContent += "=" * 80
+$reportContent += "END OF REPORT"
+$reportContent += "=" * 80
+
+# Write the report to file
+$reportContent | Out-File -FilePath $outputFile -Encoding UTF8
+
 Write-Host "WSUS Console: C:\Windows\System32\wsus\UpdateServicesConsole.exe" -ForegroundColor Gray
 Write-Host "WSUS Tools: C:\Program Files\Update Services\Tools\`n" -ForegroundColor Gray
+Write-Host "Report saved to: $outputFile" -ForegroundColor Cyan
