@@ -76,6 +76,8 @@ Service Control Manager (SCM) database corruption for WSUSService, resulting in:
 - Documents WSUS configuration (ports, SSL, paths, DB)
 - Tests service visibility in SCM
 - Saves sync history if API accessible
+- **NEW**: Detects Configuration Manager site code if available
+- **NEW**: Generates human-readable report in format: `WSUS-ASSESSMENT_[HOSTNAME]-[TIMESTAMP].txt`
 - Creates backup in `C:\Temp\WSUS_PreFix_[timestamp]`
 
 **Run this**: Before attempting any repairs
@@ -105,6 +107,8 @@ Service Control Manager (SCM) database corruption for WSUSService, resulting in:
 6. Configures service account (NETWORK SERVICE)
 7. Sets security descriptor (SDDL)
 8. Starts service and validates
+9. **NEW**: Detects Configuration Manager site code if available
+10. **NEW**: Generates human-readable report in format: `WSUS-INPLACE_REPAIR_[HOSTNAME]-[TIMESTAMP].txt`
 
 **Validation tests**:
 - ✅ `Get-Service WSUSService` succeeds
@@ -143,18 +147,20 @@ Service Control Manager (SCM) database corruption for WSUSService, resulting in:
 1. Captures current config for restoration
 2. **NEW**: Detects misconfigured SSL state (UsingSSL=0 but PortNumber=8531) and flags for correction
 3. **NEW**: Adds SSL-Only enforcement flag to ensure HTTPS configuration during reinstall
-4. Stops IIS and all WSUS processes
-5. Uninstalls WSUS Windows Features
-6. Removes all WSUS directories (Program Files, content dir)
-7. Removes IIS sites and app pools
-8. Cleans ALL registry keys:
+4. **NEW**: Detects Configuration Manager site code if available
+5. Stops IIS and all WSUS processes
+6. Uninstalls WSUS Windows Features
+7. Removes all WSUS directories (Program Files, content dir)
+8. Removes IIS sites and app pools
+9. Cleans ALL registry keys:
    - `HKLM\SOFTWARE\Microsoft\Update Services`
    - `HKLM\SYSTEM\CurrentControlSet\Services\WSUSService`
    - All ControlSet variations
-9. Fixes temp folder permissions (per Microsoft guidance):
-   - `%windir%\Temp`
-   - ASP.NET temp folders
-10. Prompts for reboot
+10. Fixes temp folder permissions (per Microsoft guidance):
+    - `%windir%\Temp`
+    - ASP.NET temp folders
+11. Generates human-readable report in format: `WSUS-NUCLEAR_CLEANUP_[HOSTNAME]-[TIMESTAMP].txt`
+12. Prompts for reboot
 
 **⚠ CRITICAL**: Must reboot after cleanup to clear SCM/IIS/WCF caches
 
@@ -172,11 +178,13 @@ Service Control Manager (SCM) database corruption for WSUSService, resulting in:
 **What it does**:
 1. Loads saved configuration from cleanup phase
 2. **NEW**: Enforces SSL-only configuration regardless of saved settings (UsingSSL=1, Port=8531)
-3. Reinstalls WSUS Windows Features
-4. Creates content directory
-5. Runs `wsusutil postinstall` with SSL configuration
-6. Verifies service registration (6 validation tests including SSL validation)
-7. Provides next-steps checklist
+3. **NEW**: Detects Configuration Manager site code if available
+4. Reinstalls WSUS Windows Features
+5. Creates content directory
+6. Runs `wsusutil postinstall` with SSL configuration
+7. Verifies service registration (6 validation tests including SSL validation)
+8. Generates human-readable report in format: `WSUS-REINSTALL_[HOSTNAME]-[TIMESTAMP].txt`
+9. Provides next-steps checklist
 
 **Post-install actions**:
 1. Configure WSUS console (upstream server, products, classifications)
