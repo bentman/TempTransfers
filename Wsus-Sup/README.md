@@ -82,8 +82,17 @@ The detailed technical analysis in the SmokingGun directory contains AI-generate
 
 - **SmokingGun/qwen.md**: Qwen's analysis of the situation as a conflicting hybrid deployment of Patch My PC solutions, causing certificate-based interference and service corruption. The document explains how multiple certificate trusts can confuse auto-discovery logic and cause WCF/WsusService.exe to fail binding. It identifies the likely scenario where the server team attempted a separate Patch My PC Cloud setup with its own certificate deployment, which conflicts with the existing SCCM-Intune-Patch My PC Publisher setup for endpoints. The analysis confirms this can cause the exact symptoms described, including the service running as a process but not registering with SCM.
 
-
-
+## Related References
+1. https://patchmypc.com/kb/third-party-updates-fail-to-install-with-error-0x800b0101/  
+2. https://patchmypc.com/kb/third-party-updates-fail-to-install-with-error-0x800b0109-in-sccm/  
+3. https://docs.patchmypc.com/installation-guides/wsus-standalone/certificate-configuration  
+4. https://patchmypc.com/remote-wsus-connection-is-not-https-this-prevents-software-update-point-from-getting-the-signing-certificate-for-third-party-updates  
+5. https://patchmypc.com/how-to-deploy-the-wsus-signing-certificate-for-third-party-software-updates  
+6. https://patchmypc.com/kb/what-wsus-signing-certificate-how/  
+7. https://www.systemcenterdudes.com/how-to-configure-patchmypc-cloud-portal/  
+8. https://docs.patchmypc.com/patch-my-pc-cloud/intune-apps/feature-comparison-with-publisher  
+9. https://www.reddit.com/r/PatchMyPC/comments/1fz4rez/patch_my_pc_cloud_vs_onprem_platforms/  
+10. https://patchmypc.com/wsus-certificate-error-access-denied
 
 **Document Version**: 1.2  
 **Last Updated**: November 21, 2025  
