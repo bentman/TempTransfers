@@ -12,16 +12,14 @@ This directory contains PowerShell scripts that serve as examples for implementi
 - **Backup**: Ensure proper backups before running any scripts that modify system services
 - **Elevated Privileges**: All scripts require administrative privileges to run properly
 
-## Additional Implementation Examples
+## WSUS Cleanup Examples
 
 For additional examples of WSUS optimization and cleanup scripts, see these community resources that demonstrate similar approaches to resolving WSUS service issues:
 
 - [Optimize-WsusServer](https://github.com/awarre/Optimize-WsusServer) - A collection of functions to optimize WSUS server performance and clean up various WSUS-related issues
 - [WSUS-Cleanup.ps1](https://github.com/samersultan/wsus-cleanup/blob/master/WSUS-Cleanup.ps1) - A comprehensive WSUS cleanup script that addresses various WSUS-related problems including database cleanup and service optimization
-- [Optimize-WsusServer GitHub Repository](https://github.com/awarre/Optimize-WsusServer) - Contains additional WSUS optimization functions that can complement the service repair approach documented here
-- [WSUS-Cleanup Script](https://github.com/samersultan/wsus-cleanup/blob/master/WSUS-Cleanup.ps1) - Provides alternative approaches to WSUS cleanup that may be useful in complex scenarios
 
-### Script Examples
+### Reference Script Examples
 
 ### Phase0-PreAssessment.ps1
 **Purpose**: Example script to capture current WSUS state before making changes
