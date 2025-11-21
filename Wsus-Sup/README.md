@@ -72,7 +72,18 @@ After implementing the fix, your team should verify:
 - **SCRIPTS/**: Reference for creating scripts to implement solutions
 - **SmokingGun/**: Detailed technical analysis of how the issue was discovered
 
----
+## Smoking Gun Analysis Summary
+
+The detailed technical analysis in the SmokingGun directory contains AI-generated assessments that helped identify the root cause. Here's a brief overview of each file:
+
+- **SmokingGun/claude.md**: Claude's analysis identifying the expired GPO-deployed certificates as the "smoking gun" causing WSUS service registration corruption. The document explains how certificate validation failures corrupt the Service Control Manager registration process, leading to the exact symptoms experienced. It details how the expired certificates were likely deployed during an abandoned Patch My PC Cloud deployment attempt and provides specific remediation steps focused on removing the rogue GPO and certificates before attempting service repair.
+
+- **SmokingGun/openai.md**: OpenAI's assessment providing a clear breakdown of Patch My PC licensing tiers and deployment models, explaining how the Cloud/SaaS model introduces certificate trust requirements that conflict with on-premises WSUS. The analysis details how mismatched/expired certificates break WSUS/SUP operations and provides targeted remediation steps. It confirms that the expired GPO certificates can absolutely cause the exact symptoms experienced, especially when there's a mismatch between the certificates deployed via GPO and those used by the active Patch My PC Publisher installation.
+
+- **SmokingGun/qwen.md**: Qwen's analysis of the situation as a conflicting hybrid deployment of Patch My PC solutions, causing certificate-based interference and service corruption. The document explains how multiple certificate trusts can confuse auto-discovery logic and cause WCF/WsusService.exe to fail binding. It identifies the likely scenario where the server team attempted a separate Patch My PC Cloud setup with its own certificate deployment, which conflicts with the existing SCCM-Intune-Patch My PC Publisher setup for endpoints. The analysis confirms this can cause the exact symptoms described, including the service running as a process but not registering with SCM.
+
+
+
 
 **Document Version**: 1.2  
 **Last Updated**: November 21, 2025  
