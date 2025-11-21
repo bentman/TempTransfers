@@ -1,0 +1,9 @@
+There are multiple Patch My PC licensing tiers (Patch, Plus, and Premium).
+ There are two deployment models: the on-premises Publisher and the cloud-based SaaS version. 
+ Our environment uses Intune + SCCM + Patch My PC Publisher for endpoint patching.
+ Servers still rely on SCCM-SUP. 
+ We discovered a GPO applying two expired certificates to the affected servers.
+ One labeled “PatchMyPC” and the other “WSUS”—which do not appear to come from the Publisher configuration. 
+ Both certificates share the same expiration date and are expired.
+ They may originate from a previous or attempted Patch My PC Cloud or standalone WSUS integration. 
+ Question: Could these expired, GPO-deployed certificates conflict with our current SCCM–Intune–Patch My PC Publisher setup and contributing to the WSUS/SUP failures described earlier?
