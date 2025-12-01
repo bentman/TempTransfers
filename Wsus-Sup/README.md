@@ -94,6 +94,26 @@ The detailed technical analysis in the SmokingGun directory contains AI-generate
 9. https://www.reddit.com/r/PatchMyPC/comments/1fz4rez/patch_my_pc_cloud_vs_onprem_platforms/  
 10. https://patchmypc.com/wsus-certificate-error-access-denied
 
+[Patch My PC - Managing WSUS code-signing certificates](https://patchmypc.com/managing-wsus-code-signing-certificates)
+[Patch My PC - Expired certificate impact on updates](https://patchmypc.com/expired-certificate-impact)
+[Microsoft - WSUS certificate best practices](https://learn.microsoft.com/en-us/troubleshoot/mem/configmgr/update-management/wsus-certificate-expires)
+[WSUS SSL certificate configuration and troubleshooting](https://learn.microsoft.com/en-us/troubleshoot/mem/configmgr/update-management/ssl-certificate-issues)
+
+- [Microsoft: Post-installation tasks for WSUS](https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/5-post-installation-tasks)
+- [Microsoft: Plan for software updates in Configuration Manager](https://learn.microsoft.com/en-us/mem/configmgr/sum/plan-design/plan-for-software-updates)
+- [Microsoft: Ports used by WSUS](https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment#ports-used-by-wsus)
+- [Microsoft: Windows Services and the Service Control Manager (SCM)](https://learn.microsoft.com/en-us/windows/win32/services/services)
+- [Microsoft: Uninstall WSUS](https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/4-uninstall-wsus)
+- [Microsoft: Extend software updates with third-party updates](https://learn.microsoft.com/en-us/mem/configmgr/sum/plan-design/third-party-software-updates)
+- [Microsoft: Configure SSL for WSUS](https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/5-post-installation-tasks#configure-ssl-on-the-wsus-server)
+- [Microsoft: Log files for software updates (WCM.log)](https://learn.microsoft.com/en-us/mem/configmgr/sum/plan-design/log-files-for-software-updates)
+- [Microsoft: Configure permissions for WSUS](https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/5-post-installation-tasks#configure-permissions-for-wsus)
+- [Microsoft: Deploy certificates by using Group Policy](https://learn.microsoft.com/en-us/windows/security/identity-protection/certificates/deploy-certificates-by-using-group-policy)
+- [Microsoft Tech Community: "Cannot delete WSUSService – Access is denied"](https://techcommunity.microsoft.com/t5/configuration-manager-archive/cannot-delete-wsusservice-access-is-denied/m-p/274358)
+- [System Center Dudes: Remove and Reinstall WSUS](https://www.systemcenterdudes.com/remove-reinstall-wsus-windows-server/)
+- [Microsoft: Service Security and Access Rights](https://learn.microsoft.com/en-us/windows/win32/services/service-security-and-access-rights)
+
+
 **Document Version**: 1.2  
 **Last Updated**: November 21, 2025  
 **Based on**: Analysis of WSUS service control manager corruption with expired GPO certificates
