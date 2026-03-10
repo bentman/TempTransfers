@@ -1,94 +1,38 @@
 <#
 .SYNOPSIS
-    Executes Dell BIOS updates safely by using Dell Command | Update CLI, optimized for both Intune and SCCM deployment scenarios.
+    Executes Dell BIOS updates safely by using Dell Command | Update CLI for SCCM application deployments.
 
 .DESCRIPTION
-    Production-oriented BIOS update wrapper for co-managed environments with enhanced support for both Intune and SCCM deployment methods.
+    Production-oriented BIOS update wrapper for SCCM-managed Dell BIOS update deployments.
     Key behaviors:
       - Resolves DCU path in both x64 and x86 install locations.
       - Enforces AC power + battery threshold checks (laptops).
       - Uses BIOS-only scope for scan/apply operations.
       - Uses Dell CLI style consistently: /command -option=value.
-      - Suspends BitLocker on the OS volume before BIOS update with automatic resume after N reboots.
-      - Supports secure BIOS password arguments (encrypted only).
+      - Uses DCU built-in BitLocker handling for BIOS updates.
       - Handles known DCU exit states and controlled reboot behavior.
-      - Enhanced logging for both Intune and SCCM environments.
-      - Dynamic configuration based on deployment context (Intune vs SCCM).
+      - Writes logs and result output for SCCM troubleshooting.
 
     Notes:
-      - Toast notifications from SYSTEM context may not render for the logged-on user.
-        They are best-effort only and never block update flow.
-      - If your management plane should own all reboot UX, run with -NoAutoReboot.
-      - Script automatically detects deployment context and adjusts behavior accordingly.
-
-.PARAMETER Force
-    Skip interactive grace delay.
+      - SCCM / Software Center is expected to own all reboot UX.
 
 .PARAMETER MinBatteryPercent
     Minimum battery percentage required when a battery is present.
-
-.PARAMETER UserGraceSeconds
-    Delay before update when an interactive user is detected.
-
-.PARAMETER RebootDelaySeconds
-    Delay before restart when reboot is required and user session is detected.
-
-.PARAMETER NoAutoReboot
-    Do not restart automatically. Exit 3010 when reboot is required.
-
-.PARAMETER EncryptedPassword
-    Encrypted BIOS password value for DCU.
-
-.PARAMETER EncryptedPasswordFile
-    Path to encrypted BIOS password file for DCU.
-
-.PARAMETER EncryptionKey
-    Encryption key used with encrypted BIOS password value/file.
-
-.PARAMETER DeploymentContext
-    Specifies deployment context: 'Intune', 'SCCM', or 'Auto' (auto-detects). Default is 'Auto'.
 
 .PARAMETER LogLevel
     Sets logging verbosity: 'INFO', 'DEBUG', 'WARN', 'ERROR'. Default is 'INFO'.
 
 .NOTES
-    Preferred log root: C:\ProgramData\Dell\Logs
-    Fallback log root:  %TEMP%\Dell\Logs (if ProgramData is not writable)
-    Enhanced for both Intune Win32 app deployments and SCCM software update catalog integration.
+    Preferred log and result root: C:\ProgramData\CFG_Utils\Update-DellBIOS
+    Fallback log and result root:  %TEMP%\CFG_Utils\Update-DellBIOS (if ProgramData is not writable)
+    Aligned to SCCM-triggered DCU-WU BIOS update workflow.
 #>
 
 [CmdletBinding()]
 param (
     [Parameter(Mandatory = $false)]
-    [switch]$Force,
-
-    [Parameter(Mandatory = $false)]
     [ValidateRange(1, 100)]
     [int]$MinBatteryPercent = 30,
-
-    [Parameter(Mandatory = $false)]
-    [ValidateRange(0, 3600)]
-    [int]$UserGraceSeconds = 60,
-
-    [Parameter(Mandatory = $false)]
-    [ValidateRange(0, 7200)]
-    [int]$RebootDelaySeconds = 120,
-
-    [Parameter(Mandatory = $false)]
-    [switch]$NoAutoReboot,
-
-    [Parameter(Mandatory = $false)]
-    [string]$EncryptedPassword,
-
-    [Parameter(Mandatory = $false)]
-    [string]$EncryptedPasswordFile,
-
-    [Parameter(Mandatory = $false)]
-    [string]$EncryptionKey,
-
-    [Parameter(Mandatory = $false)]
-    [ValidateSet('Auto', 'Intune', 'SCCM')]
-    [string]$DeploymentContext = 'Auto',
 
     [Parameter(Mandatory = $false)]
     [ValidateSet('INFO', 'DEBUG', 'WARN', 'ERROR')]
@@ -99,18 +43,20 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 # ---------------------------------------------------------------------------
-# 1. Configuration and Context Detection
+# 1. Configuration
 # ---------------------------------------------------------------------------
 $DcuCandidates = @(
+    "${env:ProgramW6432}\Dell\CommandUpdate\dcu-cli.exe",
     "${env:ProgramFiles}\Dell\CommandUpdate\dcu-cli.exe",
     "${env:ProgramFiles(x86)}\Dell\CommandUpdate\dcu-cli.exe"
 )
 
-$DellLogRoot      = $null
-$ScriptLogPath    = $null
-$TranscriptPath   = $null
-$DcuScanLogPath   = $null
-$DcuApplyLogPath  = $null
+$DellLogRoot = $null
+$ScriptLogPath = $null
+$TranscriptPath = $null
+$DcuScanLogPath = $null
+$DcuApplyLogPath = $null
+$ResultPath = $null
 
 # ---------------------------------------------------------------------------
 # 2. Helper Functions
@@ -118,8 +64,8 @@ $DcuApplyLogPath  = $null
 function Initialize-Logging {
     param([string]$LogLevel)
 
-    $preferredRoot = Join-Path $env:ProgramData 'Dell\Logs'
-    $fallbackRoot = Join-Path $env:TEMP 'Dell\Logs'
+    $preferredRoot = Join-Path $env:ProgramData 'CFG_Utils\Update-DellBIOS'
+    $fallbackRoot = Join-Path $env:TEMP 'CFG_Utils\Update-DellBIOS'
 
     try {
         if (-not (Test-Path -LiteralPath $preferredRoot)) {
@@ -134,10 +80,11 @@ function Initialize-Logging {
         $script:DellLogRoot = $fallbackRoot
     }
 
-    $script:ScriptLogPath   = Join-Path $script:DellLogRoot 'Invoke-DellBiosUpdate.log'
-    $script:TranscriptPath  = Join-Path $script:DellLogRoot 'Invoke-DellBiosUpdate.transcript.log'
-    $script:DcuScanLogPath  = Join-Path $script:DellLogRoot 'dcu_scan.log'
+    $script:ScriptLogPath = Join-Path $script:DellLogRoot 'Invoke-DellBiosUpdate.log'
+    $script:TranscriptPath = Join-Path $script:DellLogRoot 'Invoke-DellBiosUpdate.transcript.log'
+    $script:DcuScanLogPath = Join-Path $script:DellLogRoot 'dcu_scan.log'
     $script:DcuApplyLogPath = Join-Path $script:DellLogRoot 'dcu_apply.log'
+    $script:ResultPath = Join-Path $script:DellLogRoot 'result.json'
 
     if (-not (Test-Path -LiteralPath $script:ScriptLogPath)) {
         New-Item -Path $script:ScriptLogPath -ItemType File -Force | Out-Null
@@ -147,10 +94,33 @@ function Initialize-Logging {
     $script:LogLevel = $LogLevel.ToUpper()
 }
 
+function Write-Result {
+    param(
+        [Parameter(Mandatory = $true)][string]$Status,
+        [Parameter(Mandatory = $true)][int]$ExitCode,
+        [Parameter(Mandatory = $true)][string]$Message,
+        [Parameter(Mandatory = $false)][Nullable[int]]$DcuExitCode = $null
+    )
+
+    $result = [ordered]@{
+        Timestamp = (Get-Date).ToString('s')
+        Status    = $Status
+        ExitCode  = $ExitCode
+        DcuExitCode = $DcuExitCode
+        Message   = $Message
+        LogRoot   = $script:DellLogRoot
+        ScriptLog = $script:ScriptLogPath
+        ScanLog   = $script:DcuScanLogPath
+        ApplyLog  = $script:DcuApplyLogPath
+    }
+
+    $result | ConvertTo-Json -Depth 3 | Set-Content -LiteralPath $script:ResultPath -Encoding UTF8
+}
+
 function Write-Log {
     param(
         [Parameter(Mandatory = $true)][string]$Message,
-        [Parameter(Mandatory = $false)][ValidateSet('INFO','DEBUG','WARN','ERROR')][string]$Level = 'INFO'
+        [Parameter(Mandatory = $false)][ValidateSet('INFO', 'DEBUG', 'WARN', 'ERROR')][string]$Level = 'INFO'
     )
 
     $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
@@ -158,19 +128,19 @@ function Write-Log {
 
     # Write to console if DEBUG level
     if ($script:LogLevel -eq 'DEBUG' -or $Level -eq 'ERROR' -or $Level -eq 'WARN') {
-        Write-Host $logEntry -ForegroundColor $GetLogLevelColor($Level)
+        Write-Host $logEntry -ForegroundColor $(GetLogLevelColor $Level)
     }
 
     # Always write to log file
-    Add-Content -LiteralPath $ScriptLogPath -Value $logEntry
+    Add-Content -LiteralPath $script:ScriptLogPath -Value $logEntry
 }
 
 function GetLogLevelColor {
     param([string]$Level)
     switch ($Level) {
-        'INFO'  { return 'White' }
+        'INFO' { return 'White' }
         'DEBUG' { return 'Gray' }
-        'WARN'  { return 'Yellow' }
+        'WARN' { return 'Yellow' }
         'ERROR' { return 'Red' }
     }
 }
@@ -201,13 +171,16 @@ function Test-PowerStatus {
         return $true
     }
 
+    $acAcceptableStatuses = @(2, 3, 6, 7, 8, 9)
+
     foreach ($battery in @($batteries)) {
         $status = [int]$battery.BatteryStatus
         $charge = [int]$battery.EstimatedChargeRemaining
         Write-Log -Message "Battery status=$status, charge=$charge%."
 
-        # Win32_Battery BatteryStatus 2 = On AC/Charging
-        if ($status -ne 2) {
+        # Win32_Battery AC-present states include:
+        # 2 (Unknown/AC present), 3 (Fully Charged), 6/7/8/9 (Charging states)
+        if ($status -notin $acAcceptableStatuses) {
             Write-Log -Level 'WARN' -Message 'Device is not on AC power. BIOS update blocked.'
             return $false
         }
@@ -219,90 +192,6 @@ function Test-PowerStatus {
     }
 
     return $true
-}
-
-function Test-IsUserLoggedOn {
-    $cs = Get-CimInstance -ClassName Win32_ComputerSystem -ErrorAction SilentlyContinue
-    return (-not [string]::IsNullOrWhiteSpace($cs.UserName))
-}
-
-function Detect-DeploymentContext {
-    param([string]$SpecifiedContext)
-
-    if ($SpecifiedContext -ne 'Auto') {
-        return $SpecifiedContext
-    }
-
-    # Intune detection: Check for Intune management agent
-    if (Get-Service -Name 'IntuneManagementExtension' -ErrorAction SilentlyContinue) {
-        return 'Intune'
-    }
-
-    # SCCM detection: Check for SCCM client
-    if (Get-Service -Name 'SMS_Executive' -ErrorAction SilentlyContinue) {
-        return 'SCCM'
-    }
-
-    # Default to Intune if no clear detection
-    return 'Intune'
-}
-
-function Send-UserNotification {
-    param([Parameter(Mandatory = $true)][string]$Message)
-
-    try {
-        [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
-        [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
-
-        $template = @"
-<toast scenario="reminder">
-  <visual>
-    <binding template="ToastGeneric">
-      <text>IT System Maintenance</text>
-      <text>$Message</text>
-    </binding>
-  </visual>
-</toast>
-"@
-        $xml = New-Object Windows.Data.Xml.Dom.XmlDocument
-        $xml.LoadXml($template)
-        $toast = New-Object Windows.UI.Notifications.ToastNotification $xml
-        [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('Dell BIOS Update').Show($toast)
-        Write-Log -Message 'Notification attempt sent.'
-    }
-    catch {
-        Write-Log -Level 'WARN' -Message 'Notification could not be displayed (common in SYSTEM context).'
-    }
-}
-
-function Invoke-BitLockerSuspend {
-    $systemDrive = $env:SystemDrive
-    if ([string]::IsNullOrWhiteSpace($systemDrive)) { $systemDrive = 'C:' }
-
-    try {
-        $before = Get-BitLockerVolume -MountPoint $systemDrive -ErrorAction Stop
-        Write-Log -Message "BitLocker pre-state: MountPoint=$systemDrive ProtectionStatus=$($before.ProtectionStatus) VolumeStatus=$($before.VolumeStatus)."
-    }
-    catch {
-        Write-Log -Level 'WARN' -Message "Could not query BitLocker pre-state on $systemDrive. Continuing to suspend attempt."
-    }
-
-    try {
-        Write-Log -Message "Suspending BitLocker on $systemDrive for 2 reboot cycles."
-        Suspend-BitLocker -MountPoint $systemDrive -RebootCount 2 -ErrorAction Stop | Out-Null
-    }
-    catch {
-        Write-Log -Level 'ERROR' -Message "Failed to suspend BitLocker on $systemDrive. $($_.Exception.Message)"
-        throw
-    }
-
-    try {
-        $after = Get-BitLockerVolume -MountPoint $systemDrive -ErrorAction Stop
-        Write-Log -Message "BitLocker post-state: MountPoint=$systemDrive ProtectionStatus=$($after.ProtectionStatus) VolumeStatus=$($after.VolumeStatus)."
-    }
-    catch {
-        Write-Log -Level 'WARN' -Message "Could not query BitLocker post-state on $systemDrive."
-    }
 }
 
 function Start-DcuProcess {
@@ -332,50 +221,35 @@ catch {
 
 Write-Log -Message '=== Starting Invoke-DellBiosUpdate ==='
 Write-Log -Message "Log root: $DellLogRoot"
-Write-Log -Message "Deployment context: $DeploymentContext (Auto-detected: $(Detect-DeploymentContext -SpecifiedContext $DeploymentContext))"
+Write-Log -Message 'Deployment context: SCCM'
 Write-Log -Message "Log level: $LogLevel"
 
 if (-not (Test-RunningAsAdmin)) {
     Write-Log -Level 'ERROR' -Message 'Script must run elevated (Administrator/SYSTEM).'
-    exit 1
-}
-
-if ($EncryptedPassword -and $EncryptedPasswordFile) {
-    Write-Log -Level 'ERROR' -Message 'Specify either -EncryptedPassword or -EncryptedPasswordFile, not both.'
-    exit 1
-}
-
-if (($EncryptedPassword -or $EncryptedPasswordFile) -and -not $EncryptionKey) {
-    Write-Log -Level 'ERROR' -Message 'EncryptionKey is required when encrypted BIOS password input is provided.'
+    Write-Result -Status 'Failed' -ExitCode 1 -Message 'Script must run elevated (Administrator/SYSTEM).'
+    try { Stop-Transcript | Out-Null } catch {}
     exit 1
 }
 
 $DcuPath = Resolve-DcuPath
 if (-not $DcuPath) {
     Write-Log -Level 'ERROR' -Message 'Dell Command | Update CLI (dcu-cli.exe) not found in standard install locations.'
+    Write-Result -Status 'Failed' -ExitCode 1 -Message 'Dell Command | Update CLI (dcu-cli.exe) not found in standard install locations.'
+    try { Stop-Transcript | Out-Null } catch {}
     exit 1
 }
 Write-Log -Message "Resolved DCU path: $DcuPath"
 
 if (-not (Test-PowerStatus -MinimumBatteryPercent $MinBatteryPercent)) {
     Write-Log -Level 'ERROR' -Message 'Power prerequisites not met. Exiting without update.'
+    Write-Result -Status 'Blocked' -ExitCode 1 -Message 'Power prerequisites not met. Exiting without update.'
+    try { Stop-Transcript | Out-Null } catch {}
     exit 1
-}
-
-$isInteractive = Test-IsUserLoggedOn
-Write-Log -Message "Session type: $(if ($isInteractive) { 'Interactive' } else { 'Headless' })"
-
-if ($isInteractive -and -not $Force -and $UserGraceSeconds -gt 0) {
-    Send-UserNotification -Message "A required BIOS update starts in $UserGraceSeconds seconds. Please save your work."
-    Write-Log -Message "User grace delay: $UserGraceSeconds seconds."
-    Start-Sleep -Seconds $UserGraceSeconds
 }
 
 # ---------------------------------------------------------------------------
 # 4. Execute BIOS Update Flow with Context-Specific Logic
 # ---------------------------------------------------------------------------
-Invoke-BitLockerSuspend
-
 $scanArgs = @(
     '/scan',
     '-updateType=bios',
@@ -386,6 +260,31 @@ $scanArgs = @(
 $scanExitCode = Start-DcuProcess -FilePath $DcuPath -Arguments $scanArgs
 Write-Log -Message "DCU scan exit code: $scanExitCode"
 
+$scanSuccessCodes = @(0)
+$scanNoUpdateCodes = @(500)
+$scanRebootRequiredCodes = @(1, 5, 3010)
+
+if ($scanExitCode -in $scanNoUpdateCodes) {
+    Write-Log -Message 'Scan result: no applicable BIOS updates.'
+    Write-Result -Status 'Success' -ExitCode 0 -Message 'No applicable BIOS updates found during scan.'
+    try { Stop-Transcript | Out-Null } catch {}
+    exit 0
+}
+
+if ($scanExitCode -in $scanRebootRequiredCodes) {
+    Write-Log -Level 'WARN' -Message "Scan indicates reboot is required before continuing (code: $scanExitCode)."
+    Write-Result -Status 'RebootRequired' -ExitCode 3010 -Message 'Pending reboot detected by DCU scan. Returning 3010 for SCCM handling.'
+    try { Stop-Transcript | Out-Null } catch {}
+    exit 3010
+}
+
+if ($scanExitCode -notin $scanSuccessCodes) {
+    Write-Log -Level 'ERROR' -Message "DCU scan failed with non-success code: $scanExitCode"
+    Write-Result -Status 'Failed' -ExitCode 1 -Message "DCU scan failed with code: $scanExitCode" -DcuExitCode $scanExitCode
+    try { Stop-Transcript | Out-Null } catch {}
+    exit 1
+}
+
 $applyArgs = @(
     '/applyUpdates',
     '-updateType=bios',
@@ -395,30 +294,6 @@ $applyArgs = @(
     "-outputLog=$DcuApplyLogPath"
 )
 
-if ($EncryptedPassword) {
-    $applyArgs += "-encryptedPassword=$EncryptedPassword"
-    $applyArgs += "-encryptionKey=$EncryptionKey"
-}
-elseif ($EncryptedPasswordFile) {
-    $applyArgs += "-encryptedPasswordFile=$EncryptedPasswordFile"
-    $applyArgs += "-encryptionKey=$EncryptionKey"
-}
-
-# Add context-specific arguments
-switch (Detect-DeploymentContext -SpecifiedContext $DeploymentContext) {
-    'Intune' {
-        $applyArgs += '-logLevel=verbose'
-        Write-Log -Message 'Intune deployment context detected. Adding verbose logging.'
-    }
-    'SCCM' {
-        $applyArgs += '-logLevel=standard'
-        Write-Log -Message 'SCCM deployment context detected. Adding standard logging.'
-    }
-    default {
-        Write-Log -Message 'Auto-detected deployment context. Using default logging.'
-    }
-}
-
 $applyExitCode = Start-DcuProcess -FilePath $DcuPath -Arguments $applyArgs
 Write-Log -Message "DCU apply exit code: $applyExitCode"
 
@@ -427,31 +302,25 @@ Write-Log -Message "DCU apply exit code: $applyExitCode"
 # ---------------------------------------------------------------------------
 $noUpdateSuccessCodes = @(0, 500)
 
-$rebootRequiredCodes = @(1)
+# Note: DCU's documented generic reboot-required code is 1 and pending reboot is 5.
+# Some environments also observe 3010 from wrapped update installers, so handle it as reboot-required.
+$rebootRequiredCodes = @(1, 5, 3010)
 
 if ($applyExitCode -in $noUpdateSuccessCodes) {
     Write-Log -Message 'Result: success/no applicable BIOS updates.'
+    Write-Result -Status 'Success' -ExitCode 0 -Message 'Success or no applicable BIOS updates.'
+    try { Stop-Transcript | Out-Null } catch {}
     exit 0
 }
 
 if ($applyExitCode -in $rebootRequiredCodes) {
     Write-Log -Message 'Result: BIOS update applied; reboot required.'
-
-    if ($NoAutoReboot) {
-        Write-Log -Message 'NoAutoReboot set. Returning 3010 for management-plane restart handling.'
-        exit 3010
-    }
-
-    if ($isInteractive -and $RebootDelaySeconds -gt 0) {
-        Send-UserNotification -Message "BIOS update completed. Restarting in $RebootDelaySeconds seconds."
-        Write-Log -Message "Reboot delay: $RebootDelaySeconds seconds."
-        Start-Sleep -Seconds $RebootDelaySeconds
-    }
-
-    Write-Log -Message 'Initiating forced reboot now.'
-    Restart-Computer -Force
-    exit 0
+    Write-Result -Status 'RebootRequired' -ExitCode 3010 -Message 'BIOS update applied; reboot required. Returning 3010 for SCCM handling.'
+    try { Stop-Transcript | Out-Null } catch {}
+    exit 3010
 }
 
 Write-Log -Level 'ERROR' -Message "Result: DCU failed/unknown exit code: $applyExitCode"
+Write-Result -Status 'Failed' -ExitCode 1 -Message "DCU failed or returned an unknown exit code: $applyExitCode" -DcuExitCode $applyExitCode
+try { Stop-Transcript | Out-Null } catch {}
 exit 1
