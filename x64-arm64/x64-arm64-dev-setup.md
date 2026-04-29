@@ -7,7 +7,7 @@ This note defines the implementation decision for reliable x64/ARM64 development
 - Use a repo-owned Python dev runner as the primary architecture-sensitive execution boundary.
 - The runner is invoked by the `backend/.venv` Python executable.
 - `.venv` is disposable environment state and must not contain the runner implementation.
-- Use Microsoft `vcvarsall.bat` / native and cross compiler environment setup for Windows MSVC capture.
+- Use Microsoft `vcvarsall.bat` / native and cross compiler environment setup for Windows MSVC capture, including Visual Studio path discovery.
 - Respect Tauri Windows ARM64 target/build support.
 - Respect Python packaging dependency groups if referenced.
 - Pass explicit Rust/Tauri targets for architecture-sensitive builds.
@@ -81,6 +81,8 @@ A valid first implementation slice proves:
 - `backend/.venv` Python can invoke the repo-owned Python dev runner.
 - The runner can select x64 or ARM64 mode.
 - On Windows, it can capture the selected Visual Studio/MSVC environment.
-- It verifies `VSCMD_VER`, `cl` path, `cl /Bv`, Rust toolchain, installed Rust target, active Python executable, and Python `platform.machine()`.
+- It discovers Visual Studio/MSVC paths and verifies `VSCMD_VER`, `cl` path, `cl /Bv`, Rust toolchain, installed Rust target, active Python executable, and Python `platform.machine()`.
+- It validates package-manager/Tauri CLI availability.
 - It can run or dry-run the intended Tauri command under the captured environment.
+- It demonstrates x64-to-ARM64 cross-targeting support or explicitly documents cross-targeting as deferred beyond the first slice.
 - Dependency checks are explicit and non-mutating unless a deliberate `deps-sync` command is invoked.
