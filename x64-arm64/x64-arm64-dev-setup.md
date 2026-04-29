@@ -1,27 +1,81 @@
-# x64-ARM64 Architecture Development Guide
+# x64-ARM64 Development Setup: Implementation Decision Note
 
-## Overview
-This guide consolidates research on handling x64 and ARM64 builds in a FastAPI/Tauri repo using VS Code and Cline, prioritizing reliability over manual terminal management.
+## Objective
+This note defines the implementation decision for reliable x64/ARM64 development in the FastAPI/Tauri repo. It focuses on boundary ownership, explicit architecture handling, and the role of a repo-owned Python dev runner.
 
-## Validated Requirements
-- MSVC toolchain via `vcvarsall.bat` for environment setup [Microsoft Learn](https://learn.microsoft.com/en-us/cpp/build/how-to-enable-a-64-bit-visual-cpp-toolset-on-the-command-line).
-- Rust `aarch64-pc-windows-msvc` target and ARM64 build tools for Tauri [Tauri v2 Docs](https://v2.tauri.app/distribute/windows-installer/).
-- Python native extensions require arch-specific builds [Python setuptools](https://setuptools.pypa.io/en/latest/userguide/ext_modules.html).
+## Validated Direction
+- Use a repo-owned Python dev runner as the primary architecture-sensitive execution boundary.
+- The runner is invoked by the `backend/.venv` Python executable.
+- `.venv` is disposable environment state and must not contain the runner implementation.
+- Use Visual Studio/MSVC environment capture for Windows native build commands.
+- Pass explicit Rust/Tauri targets for architecture-sensitive builds.
+- Treat VS Code terminal profiles, Developer Prompt/PowerShell, and Cline CLI from a prepared shell as fallbacks only.
 
-## Recommended Workflow: Python Runner
-Use a script in `backend/.venv` to detect arch, invoke `vcvarsall.bat`, and spawn commands. Example: `python run_dev.py --arch arm64 tauri build`.
+## Runner Ownership and Invocation
+- The runner code lives in versioned repo source.
+- The runner is invoked by the `backend/.venv` Python executable.
+- The `.venv` Python executable is the command entrypoint, not the implementation location.
+- `backend/.venv` must remain disposable environment state; the implementation must live in repo source, not under `.venv`.
+
+## Windows Environment Capture Method
+On Windows, the Python runner should capture the Visual Studio/MSVC environment by launching a child `cmd` process, sourcing the selected Visual Studio variables, parsing the emitted environment, and then running the requested command with that captured environment dictionary.
+
+Conceptual method:
+```cmd
+call vcvarsall.bat <arch> && set
+```
+
+Then parse the output of `set` into an environment dictionary and execute the requested command under that captured environment.
 
 ## Architecture Mapping
-| Mode | Host | Target | Rust Target | MSVC Arg |
-|------|------|--------|-------------|----------|
-| x64 | x64 | x64 | x86_64-pc-windows-msvc | x64 |
-| arm64 | ARM64 | ARM64 | aarch64-pc-windows-msvc | arm64 |
-| cross | x64 | ARM64 | aarch64-pc-windows-msvc | x64_arm64 |
+```
+x64 native
+  Host: Windows x64
+  Target: Windows x64
+  Rust target: x86_64-pc-windows-msvc
+  MSVC arg: amd64 or x64
 
-## Alternatives
-- VS Code profiles: Convenient but unreliable for Cline [GitHub Issue #3295](https://github.com/cline/cline/issues/3295).
-- Developer PowerShell: Microsoft-supported but shell-specific.
+ARM64 native
+  Host: Windows ARM64
+  Target: Windows ARM64
+  Rust target: aarch64-pc-windows-msvc
+  MSVC arg: arm64
+  Must be proven on the ARM64 host with installed ARM64-native Visual Studio tools.
 
-## Risks
-- Cline env inheritance uncertain; test with subprocess injection.
-- ARM64 wheel availability; verify deps.
+x64-to-ARM64 cross-target
+  Host: Windows x64
+  Target: Windows ARM64
+  Rust target: aarch64-pc-windows-msvc
+  MSVC arg: amd64_arm64 or x64_arm64
+```
+
+## Dependency Provisioning Boundaries
+- `pyproject.toml` owns declared Python dependencies and optional dependency groups.
+- `backend/.venv` owns installed local environment state.
+- Dependency installation must be explicit.
+- Normal check/build commands should validate and fail with remediation, not silently install missing packages or tools.
+- Architecture-sensitive or hardware-sensitive dependencies must not be blindly universalized.
+
+## Command Category Boundaries
+```
+deps-check
+  Non-mutating. Reports missing Python packages, Rust targets, Node packages, and Visual Studio components where detectable.
+
+deps-sync
+  Explicit, mutating install/sync of declared dependencies into backend/.venv.
+
+check --arch <arch>
+  Non-mutating architecture and toolchain validation.
+
+tauri-build --arch <arch>
+  Build-only execution. No hidden install, only normal build artifacts.
+```
+
+## Acceptance Criteria
+A valid first implementation slice proves:
+- `backend/.venv` Python can invoke the repo-owned Python dev runner.
+- The runner can select x64 or ARM64 mode.
+- On Windows, it can capture the selected Visual Studio/MSVC environment.
+- It verifies `VSCMD_VER`, `cl` path, `cl /Bv`, Rust toolchain, installed Rust target, active Python executable, and Python `platform.machine()`.
+- It can run or dry-run the intended Tauri command under the captured environment.
+- Dependency checks are explicit and non-mutating unless a deliberate `deps-sync` command is invoked.
