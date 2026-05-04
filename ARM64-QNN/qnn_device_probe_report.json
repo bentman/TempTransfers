@@ -1,0 +1,2000 @@
+{
+  "os": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "ARM64",
+    "processor": "ARMv8 (64-bit) Family 8 Model 1 Revision 201, Qualcomm Technologies Inc",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:31:18) [MSC v.1943 64 bit (ARM64)]",
+    "is_windows": true,
+    "is_arm64": true,
+    "windows_os_cim": {
+      "Caption": "Microsoft Windows 11 Pro",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200",
+      "OSArchitecture": "ARM 64-bit Processor"
+    },
+    "windows_os_cim_raw": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,OSArchitecture | ConvertTo-Json -Compress"
+      ],
+      "rc": 0,
+      "stdout": "{\"Caption\":\"Microsoft Windows 11 Pro\",\"Version\":\"10.0.26200\",\"BuildNumber\":\"26200\",\"OSArchitecture\":\"ARM 64-bit Processor\"}",
+      "stderr": ""
+    }
+  },
+  "soc": {
+    "cpu": {
+      "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+      "Manufacturer": "Qualcomm Technologies Inc",
+      "Architecture": 12,
+      "NumberOfCores": 10,
+      "NumberOfLogicalProcessors": 10
+    },
+    "cpu_raw": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "Get-CimInstance Win32_Processor | Select-Object Name,Manufacturer,Architecture,NumberOfCores,NumberOfLogicalProcessors | ConvertTo-Json -Compress"
+      ],
+      "rc": 0,
+      "stdout": "{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"Qualcomm Technologies Inc\",\"Architecture\":12,\"NumberOfCores\":10,\"NumberOfLogicalProcessors\":10}",
+      "stderr": ""
+    },
+    "computer_system": {
+      "Manufacturer": "Microsoft Corporation",
+      "Model": "Microsoft Surface Laptop, 7th Edition",
+      "SystemType": "ARM64-based PC"
+    },
+    "computer_system_raw": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "Get-CimInstance Win32_ComputerSystem | Select-Object Manufacturer,Model,SystemType | ConvertTo-Json -Compress"
+      ],
+      "rc": 0,
+      "stdout": "{\"Manufacturer\":\"Microsoft Corporation\",\"Model\":\"Microsoft Surface Laptop, 7th Edition\",\"SystemType\":\"ARM64-based PC\"}",
+      "stderr": ""
+    }
+  },
+  "qualcomm_devices": {
+    "pnp_candidates": [
+      {
+        "Name": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C5A\\64",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Spectra(TM) 695 ISP Camera MipiCsi Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "Camera",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C98&SUBSYS_CRD08380&REV_0000\\18",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C10\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C10\\4",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C10\\5",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C10\\6",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C10\\8",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C10\\9",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Analog-to-Digital Converter Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C11\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C16\\3",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C16\\F",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Secure Processor Subsystem Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C8D\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) SSG Secure Services Device",
+        "Manufacturer": "Qualcomm",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM06D8\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "ACPI Processor Container Device",
+        "Manufacturer": "(Standard system devices)",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\ACPI0010\\10",
+        "Status": "OK"
+      },
+      {
+        "Name": "ACPI Processor Container Device",
+        "Manufacturer": "(Standard system devices)",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\ACPI0010\\11",
+        "Status": "OK"
+      },
+      {
+        "Name": "ACPI Processor Container Device",
+        "Manufacturer": "(Standard system devices)",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\ACPI0010\\12",
+        "Status": "OK"
+      },
+      {
+        "Name": "Surface Camera Front",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "Camera",
+        "DeviceID": "ACPI\\VEN_OVTI&DEV_02C1&SUBSYS_MSHW0470&REV_0000\\1A",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Spectra(TM) 395 SecureISP Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CCC\\19",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\2",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\3",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\4",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\5",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\6",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\8",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\9",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz",
+        "Manufacturer": "(Standard processor types)",
+        "PNPClass": "Processor",
+        "DeviceID": "ACPI\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\A",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Aqstic(TM)",
+        "Manufacturer": "(Standard system devices)",
+        "PNPClass": "MEDIA",
+        "DeviceID": "ADCM\\VEN_QCOM&DEV_0CC1&SUBSYS_MSHW0462&REV_0A\\4&2A777998&0&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Aqstic(TM) ACX Audio Device",
+        "Manufacturer": "QUALCOMM",
+        "PNPClass": "MEDIA",
+        "DeviceID": "ADCM\\VEN_QCOM&DEV_0CE6&SUBSYS_MSHW0462&REV_0A\\4&2A777998&0&1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Aqstic(TM) Audio DSP and Calibration Manager",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ADSP\\VEN_QCOM&DEV_0C22&SUBSYS_MSHW0462&REV_0A\\3&D1F2880&0&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Surface Camera AVStream Device",
+        "Manufacturer": "Qualcomm",
+        "PNPClass": "Camera",
+        "DeviceID": "DISPLAY\\QCOM_AVSTREAM_8380\\3&5E9CBA8&0&UID32768",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0D01\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0D01\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Aqstic(TM) BT ACX Transport Device",
+        "Manufacturer": "QUALCOMM",
+        "PNPClass": "Bluetooth",
+        "DeviceID": "ACPI\\QCOM0D04\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) USB3(TM) eXtensible Host Controller",
+        "Manufacturer": "Generic USB xHCI Host Controller",
+        "PNPClass": "USB",
+        "DeviceID": "ACPI\\QCOM0D08\\3",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Protection Domain Service Registry Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_06DF&SUBSYS_CRD08380&REV_0008\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) USB4(TM) Host Router Bus",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C6D\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CBF\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Power Management FGBCL Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C77\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) ACPI Bridge Device",
+        "Manufacturer": "Qualcomm Technologies Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0427\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) System Manager PMIC GPIO Framework Extension Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C2D\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Secure Kernel Extension",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CAC\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Peripheral Image Loader Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_06E0&SUBSYS_CRD08380&REV_0008\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm System Cache Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C83&SUBSYS_CRD08380&REV_0002\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) USB Type-C Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "USBDevice",
+        "DeviceID": "ACPI\\QCOM0CA4\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Audio Proxy APO",
+        "Manufacturer": "QUALCOMM",
+        "PNPClass": "AudioProcessingObject",
+        "DeviceID": "SWD\\DRIVERENUM\\{F5E603DE-5801-48AD-83F2-9E0666B0A340}#PROXYAPO&6&11D9B152&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm FastConnect 7800 Dual Bluetooth Adapter",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "Bluetooth",
+        "DeviceID": "QCA_SHB\\UART_H4_HMT\\3&2DBA09C2&0&4097",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) SOC Partition Interface Device",
+        "Manufacturer": "Qualcomm Technologies Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM06DD\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Shared Memory Port Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C84\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C88\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C88\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C88\\2",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) DCF Device",
+        "Manufacturer": "Qualcomm",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM06E7\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Subsystem Dependency Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C20\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) NSP0 CDSP SW Thermal Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CC3\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Spectra(TM) 695 ISP Camera Flash Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "Camera",
+        "DeviceID": "ACPI\\QCOM0C27\\19",
+        "Status": "OK"
+      },
+      {
+        "Name": "Snapdragon(R) X Plus - X1P64100 - Qualcomm(R) Hexagon(TM) NPU",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "ComputeAccelerator",
+        "DeviceID": "ACPI\\QCOM0D0A\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) SPI Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C0E\\14",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Slimbus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ADSP\\VEN_QCOM&DEV_0C0F&SUBSYS_MSHW0462&REV_0A\\3&D1F2880&0&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "ACPI Processor Container Device",
+        "Manufacturer": "(Standard system devices)",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\ACPI0010\\100000",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm ASD Audio Proxy APO",
+        "Manufacturer": "QUALCOMM",
+        "PNPClass": "AudioProcessingObject",
+        "DeviceID": "SWD\\DRIVERENUM\\ASDPROXYAPO&6&1288D27E&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Wlan Thermal Mitigation Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CD5\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Power Engine Plug-in Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C17&SUBSYS_CRD08380&REV_008A\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) All-Ways Aware(TM) Sensor Platform Device - Keyboard",
+        "Manufacturer": "Qualcomm",
+        "PNPClass": "Sensor",
+        "DeviceID": "ACPI\\MSHW0474\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Data IPC Router Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C0D\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Audio DSP Subsystem Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C1B&SUBSYS_MSHW0462&REV_000A\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C91\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) PCIe Platform Extension Plugin",
+        "Manufacturer": "(Standard system devices)",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C96\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) TFTP Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM06DC\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Spectra(TM) 695 ISP Camera Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "Camera",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C25&SUBSYS_CRD08380&REV_0000\\16",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Compute DSP Subsystem Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CB0\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) System Manager SCM Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM04DD\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) System Manager Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM04DE\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Bluetooth UART Transport Driver",
+        "Manufacturer": "Qualcomm Atheros Communications Inc.",
+        "PNPClass": "Bluetooth",
+        "DeviceID": "ACPI\\QCOM0C6B\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Power Management PMIC Apps Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C2C\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Reset Power Error Notifier Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM06E1\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) EVA Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CF1\\1E",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Aqstic(TM) Audio Adapter Device",
+        "Manufacturer": "QUALCOMM",
+        "PNPClass": "MEDIA",
+        "DeviceID": "AUCD\\VEN_QCOM&DEV_0C29&SUBSYS_MSHW0462&REV_0A\\5&2A32BB88&0&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Secure Processor Device",
+        "Manufacturer": "Qualcomm Technologies Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C87\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Audio Proxy APO",
+        "Manufacturer": "QUALCOMM",
+        "PNPClass": "AudioProcessingObject",
+        "DeviceID": "SWD\\DRIVERENUM\\PROXYAPO&6&11D9B152&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Audio RPC Daemon Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C82\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) All-Ways Aware(TM) Sensor Platform Device - Display",
+        "Manufacturer": "Qualcomm",
+        "PNPClass": "Sensor",
+        "DeviceID": "ACPI\\MSHW0473\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) System Manager Secapp Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CE4\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Display Services",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "SoftwareComponent",
+        "DeviceID": "SWD\\DRIVERENUM\\{17712798-2541-1623-4249-157167142812}#QCDPPSLIBRARY&3&5E9CBA8&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm ASD Audio Proxy APO",
+        "Manufacturer": "QUALCOMM",
+        "PNPClass": "AudioProcessingObject",
+        "DeviceID": "SWD\\DRIVERENUM\\ASDPROXYAPO&5&24050019&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) FastConnect(TM) 7800 Mobile Connectivity System",
+        "Manufacturer": "Qualcomm Communications Inc.",
+        "PNPClass": "Net",
+        "DeviceID": "PCI\\VEN_17CB&DEV_1107&SUBSYS_110717CB&REV_01\\4&CDACDEC&0&0000",
+        "Status": "OK"
+      },
+      {
+        "Name": "Surface Camera Platform Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "Camera",
+        "DeviceID": "ACPI\\QCOM0C32\\1B",
+        "Status": "OK"
+      },
+      {
+        "Name": "Microsoft Passport Container Enumeration Bus",
+        "Manufacturer": "Microsoft",
+        "PNPClass": "SoftwareDevice",
+        "DeviceID": "SWD\\SCDEVICEENUMBUS\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Power Management PMIC Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C2B\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Subsys Base Thermal Mitigation Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM06E5\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C58\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C58\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C59\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C59\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Adreno(TM) X1-85 GPU",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "Display",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C36&SUBSYS_IDP08380&REV_008A\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C5E\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C5F\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Power Management PMIC GLink Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C8E\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm CPU Core parking Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CF2\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm CPU DCVS Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CF3\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm CPU DCVS Cluster 0 Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CF4\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Inter Processor Communication Interrupt Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM06C2\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm CPU DCVS Cluster 1 Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CF5\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm CPU DCVS Cluster 2 Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CF6\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm GPU limits Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CF7\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm NSP limits Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CF8\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Modem skin Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CF9\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Surface IR Camera Front",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "Camera",
+        "DeviceID": "ACPI\\VEN_SMO&DEV_55F0&SUBSYS_MSHW0472&REV_0000\\1C",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Bam Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C0A\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Bam Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C0A\\5",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm Modem BCL Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CFB\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) SPMI Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C0B\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm WLAN Limits Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CFC\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) System Manager GPIO Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C0C\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) SPI Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C0E\\B",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) IOMMU Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM068F\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) IOMMU Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM068F\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) FastRPC Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C5C\\2&DABA3FF&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm System MMU Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C09&SUBSYS_CRD08380&REV_0002\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm System MMU Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C09&SUBSYS_CRD08380&REV_0002\\1",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Spectra(TM) 695 ISP Camera JPEG Encoder Device",
+        "Manufacturer": "Qualcomm",
+        "PNPClass": "Camera",
+        "DeviceID": "ACPI\\QCOM0C33\\17",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device",
+        "Manufacturer": "QUALCOMM",
+        "PNPClass": "MEDIA",
+        "DeviceID": "QCASD\\STATICENDPOINTDEVICE0\\5&24050019&0&0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C16\\16",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C60\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C61\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C62\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C63\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C64\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) System Manager Device",
+        "Manufacturer": "Qualcomm",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0CA8\\0",
+        "Status": "OK"
+      },
+      {
+        "Name": "Qualcomm(R) System Manager Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "PNPClass": "System",
+        "DeviceID": "ACPI\\QCOM0C2F\\2&DABA3FF&0",
+        "Status": "OK"
+      }
+    ],
+    "pnp_candidates_raw": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "Get-CimInstance Win32_PnPEntity | Where-Object { $_.Name -match 'Qualcomm|Hexagon|NPU|Neural|AI|HTP|QNN|Snapdragon' -or $_.Manufacturer -match 'Qualcomm' } | Select-Object Name,Manufacturer,PNPClass,DeviceID,Status | ConvertTo-Json -Compress"
+      ],
+      "rc": 0,
+      "stdout": "[{\"Name\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C5A\\\\64\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera MipiCsi Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"Camera\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C98\\u0026SUBSYS_CRD08380\\u0026REV_0000\\\\18\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\4\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\5\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\6\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\8\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\9\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Analog-to-Digital Converter Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C11\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C16\\\\3\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C16\\\\F\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Secure Processor Subsystem Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C8D\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) SSG Secure Services Device\",\"Manufacturer\":\"Qualcomm\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM06D8\\\\0\",\"Status\":\"OK\"},{\"Name\":\"ACPI Processor Container Device\",\"Manufacturer\":\"(Standard system devices)\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\ACPI0010\\\\10\",\"Status\":\"OK\"},{\"Name\":\"ACPI Processor Container Device\",\"Manufacturer\":\"(Standard system devices)\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\ACPI0010\\\\11\",\"Status\":\"OK\"},{\"Name\":\"ACPI Processor Container Device\",\"Manufacturer\":\"(Standard system devices)\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\ACPI0010\\\\12\",\"Status\":\"OK\"},{\"Name\":\"Surface Camera Front\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"Camera\",\"DeviceID\":\"ACPI\\\\VEN_OVTI\\u0026DEV_02C1\\u0026SUBSYS_MSHW0470\\u0026REV_0000\\\\1A\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Spectra(TM) 395 SecureISP Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CCC\\\\19\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\2\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\3\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\4\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\5\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\6\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\8\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\9\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz\",\"Manufacturer\":\"(Standard processor types)\",\"PNPClass\":\"Processor\",\"DeviceID\":\"ACPI\\\\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\\\\A\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Aqstic(TM)\",\"Manufacturer\":\"(Standard system devices)\",\"PNPClass\":\"MEDIA\",\"DeviceID\":\"ADCM\\\\VEN_QCOM\\u0026DEV_0CC1\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\4\\u00262A777998\\u00260\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Aqstic(TM) ACX Audio Device\",\"Manufacturer\":\"QUALCOMM\",\"PNPClass\":\"MEDIA\",\"DeviceID\":\"ADCM\\\\VEN_QCOM\\u0026DEV_0CE6\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\4\\u00262A777998\\u00260\\u00261\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Aqstic(TM) Audio DSP and Calibration Manager\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ADSP\\\\VEN_QCOM\\u0026DEV_0C22\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\3\\u0026D1F2880\\u00260\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Surface Camera AVStream Device\",\"Manufacturer\":\"Qualcomm\",\"PNPClass\":\"Camera\",\"DeviceID\":\"DISPLAY\\\\QCOM_AVSTREAM_8380\\\\3\\u00265E9CBA8\\u00260\\u0026UID32768\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0D01\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0D01\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Aqstic(TM) BT ACX Transport Device\",\"Manufacturer\":\"QUALCOMM\",\"PNPClass\":\"Bluetooth\",\"DeviceID\":\"ACPI\\\\QCOM0D04\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) USB3(TM) eXtensible Host Controller\",\"Manufacturer\":\"Generic USB xHCI Host Controller\",\"PNPClass\":\"USB\",\"DeviceID\":\"ACPI\\\\QCOM0D08\\\\3\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Protection Domain Service Registry Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_06DF\\u0026SUBSYS_CRD08380\\u0026REV_0008\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) USB4(TM) Host Router Bus\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C6D\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CBF\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Power Management FGBCL Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C77\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) ACPI Bridge Device\",\"Manufacturer\":\"Qualcomm Technologies Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0427\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) System Manager PMIC GPIO Framework Extension Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C2D\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Secure Kernel Extension\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CAC\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Peripheral Image Loader Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_06E0\\u0026SUBSYS_CRD08380\\u0026REV_0008\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm System Cache Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C83\\u0026SUBSYS_CRD08380\\u0026REV_0002\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) USB Type-C Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"USBDevice\",\"DeviceID\":\"ACPI\\\\QCOM0CA4\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Audio Proxy APO\",\"Manufacturer\":\"QUALCOMM\",\"PNPClass\":\"AudioProcessingObject\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\{F5E603DE-5801-48AD-83F2-9E0666B0A340}#PROXYAPO\\u00266\\u002611D9B152\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm FastConnect 7800 Dual Bluetooth Adapter\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"Bluetooth\",\"DeviceID\":\"QCA_SHB\\\\UART_H4_HMT\\\\3\\u00262DBA09C2\\u00260\\u00264097\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) SOC Partition Interface Device\",\"Manufacturer\":\"Qualcomm Technologies Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM06DD\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Shared Memory Port Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C84\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C88\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C88\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C88\\\\2\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) DCF Device\",\"Manufacturer\":\"Qualcomm\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM06E7\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Subsystem Dependency Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C20\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) NSP0 CDSP SW Thermal Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CC3\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera Flash Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"Camera\",\"DeviceID\":\"ACPI\\\\QCOM0C27\\\\19\",\"Status\":\"OK\"},{\"Name\":\"Snapdragon(R) X Plus - X1P64100 - Qualcomm(R) Hexagon(TM) NPU\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"ComputeAccelerator\",\"DeviceID\":\"ACPI\\\\QCOM0D0A\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) SPI Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C0E\\\\14\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Slimbus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ADSP\\\\VEN_QCOM\\u0026DEV_0C0F\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\3\\u0026D1F2880\\u00260\\u00260\",\"Status\":\"OK\"},{\"Name\":\"ACPI Processor Container Device\",\"Manufacturer\":\"(Standard system devices)\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\ACPI0010\\\\100000\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm ASD Audio Proxy APO\",\"Manufacturer\":\"QUALCOMM\",\"PNPClass\":\"AudioProcessingObject\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\ASDPROXYAPO\\u00266\\u00261288D27E\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Wlan Thermal Mitigation Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CD5\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Power Engine Plug-in Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C17\\u0026SUBSYS_CRD08380\\u0026REV_008A\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) All-Ways Aware(TM) Sensor Platform Device - Keyboard\",\"Manufacturer\":\"Qualcomm\",\"PNPClass\":\"Sensor\",\"DeviceID\":\"ACPI\\\\MSHW0474\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Data IPC Router Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C0D\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Audio DSP Subsystem Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C1B\\u0026SUBSYS_MSHW0462\\u0026REV_000A\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C91\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) PCIe Platform Extension Plugin\",\"Manufacturer\":\"(Standard system devices)\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C96\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) TFTP Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM06DC\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"Camera\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C25\\u0026SUBSYS_CRD08380\\u0026REV_0000\\\\16\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Compute DSP Subsystem Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CB0\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) System Manager SCM Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM04DD\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) System Manager Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM04DE\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Bluetooth UART Transport Driver\",\"Manufacturer\":\"Qualcomm Atheros Communications Inc.\",\"PNPClass\":\"Bluetooth\",\"DeviceID\":\"ACPI\\\\QCOM0C6B\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Power Management PMIC Apps Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C2C\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Reset Power Error Notifier Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM06E1\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) EVA Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CF1\\\\1E\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Aqstic(TM) Audio Adapter Device\",\"Manufacturer\":\"QUALCOMM\",\"PNPClass\":\"MEDIA\",\"DeviceID\":\"AUCD\\\\VEN_QCOM\\u0026DEV_0C29\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\5\\u00262A32BB88\\u00260\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Secure Processor Device\",\"Manufacturer\":\"Qualcomm Technologies Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C87\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Audio Proxy APO\",\"Manufacturer\":\"QUALCOMM\",\"PNPClass\":\"AudioProcessingObject\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\PROXYAPO\\u00266\\u002611D9B152\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Audio RPC Daemon Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C82\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) All-Ways Aware(TM) Sensor Platform Device - Display\",\"Manufacturer\":\"Qualcomm\",\"PNPClass\":\"Sensor\",\"DeviceID\":\"ACPI\\\\MSHW0473\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) System Manager Secapp Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CE4\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Display Services\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"SoftwareComponent\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\{17712798-2541-1623-4249-157167142812}#QCDPPSLIBRARY\\u00263\\u00265E9CBA8\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm ASD Audio Proxy APO\",\"Manufacturer\":\"QUALCOMM\",\"PNPClass\":\"AudioProcessingObject\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\ASDPROXYAPO\\u00265\\u002624050019\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) FastConnect(TM) 7800 Mobile Connectivity System\",\"Manufacturer\":\"Qualcomm Communications Inc.\",\"PNPClass\":\"Net\",\"DeviceID\":\"PCI\\\\VEN_17CB\\u0026DEV_1107\\u0026SUBSYS_110717CB\\u0026REV_01\\\\4\\u0026CDACDEC\\u00260\\u00260000\",\"Status\":\"OK\"},{\"Name\":\"Surface Camera Platform Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"Camera\",\"DeviceID\":\"ACPI\\\\QCOM0C32\\\\1B\",\"Status\":\"OK\"},{\"Name\":\"Microsoft Passport Container Enumeration Bus\",\"Manufacturer\":\"Microsoft\",\"PNPClass\":\"SoftwareDevice\",\"DeviceID\":\"SWD\\\\SCDEVICEENUMBUS\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Power Management PMIC Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C2B\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Subsys Base Thermal Mitigation Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM06E5\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C58\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C58\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C59\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C59\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Adreno(TM) X1-85 GPU\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"Display\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C36\\u0026SUBSYS_IDP08380\\u0026REV_008A\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C5E\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C5F\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Power Management PMIC GLink Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C8E\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm CPU Core parking Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CF2\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm CPU DCVS Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CF3\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm CPU DCVS Cluster 0 Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CF4\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Inter Processor Communication Interrupt Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM06C2\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm CPU DCVS Cluster 1 Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CF5\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm CPU DCVS Cluster 2 Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CF6\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm GPU limits Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CF7\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm NSP limits Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CF8\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Modem skin Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CF9\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Surface IR Camera Front\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"Camera\",\"DeviceID\":\"ACPI\\\\VEN_SMO\\u0026DEV_55F0\\u0026SUBSYS_MSHW0472\\u0026REV_0000\\\\1C\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Bam Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C0A\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Bam Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C0A\\\\5\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm Modem BCL Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CFB\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) SPMI Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C0B\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm WLAN Limits Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CFC\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) System Manager GPIO Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C0C\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) SPI Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C0E\\\\B\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) IOMMU Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM068F\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) IOMMU Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM068F\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) FastRPC Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C5C\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm System MMU Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C09\\u0026SUBSYS_CRD08380\\u0026REV_0002\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm System MMU Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C09\\u0026SUBSYS_CRD08380\\u0026REV_0002\\\\1\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera JPEG Encoder Device\",\"Manufacturer\":\"Qualcomm\",\"PNPClass\":\"Camera\",\"DeviceID\":\"ACPI\\\\QCOM0C33\\\\17\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device\",\"Manufacturer\":\"QUALCOMM\",\"PNPClass\":\"MEDIA\",\"DeviceID\":\"QCASD\\\\STATICENDPOINTDEVICE0\\\\5\\u002624050019\\u00260\\u00260\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C16\\\\16\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C60\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C61\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C62\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C63\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C64\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) System Manager Device\",\"Manufacturer\":\"Qualcomm\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0CA8\\\\0\",\"Status\":\"OK\"},{\"Name\":\"Qualcomm(R) System Manager Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"PNPClass\":\"System\",\"DeviceID\":\"ACPI\\\\QCOM0C2F\\\\2\\u0026DABA3FF\\u00260\",\"Status\":\"OK\"}]",
+      "stderr": ""
+    },
+    "signed_driver_candidates": [
+      {
+        "DeviceName": "Microsoft Input Configuration Device",
+        "Manufacturer": "Microsoft",
+        "DriverVersion": "10.0.26100.1",
+        "DriverDate": "/Date(1150848000000)/",
+        "InfName": "mtconfig.inf",
+        "DeviceID": "HID\\MSHW0238&COL07\\3&868ECB2&0&0006"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Analog-to-Digital Converter Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem13.inf",
+        "DeviceID": "ACPI\\QCOM0C11\\0"
+      },
+      {
+        "DeviceName": "Qualcomm FastConnect 7800 Dual Bluetooth Adapter",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4422.300",
+        "DriverDate": "/Date(1757030400000)/",
+        "InfName": "oem107.inf",
+        "DeviceID": "QCA_SHB\\UART_H4_HMT\\3&2DBA09C2&0&4097"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Bluetooth UART Transport Driver",
+        "Manufacturer": "Qualcomm Atheros Communications Inc.",
+        "DriverVersion": "1.0.4374.1301",
+        "DriverDate": "/Date(1752624000000)/",
+        "InfName": "oem77.inf",
+        "DeviceID": "ACPI\\QCOM0C6B\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Aqstic(TM) BT ACX Transport Device",
+        "Manufacturer": "QUALCOMM",
+        "DriverVersion": "1.0.4357.100",
+        "DriverDate": "/Date(1750636800000)/",
+        "InfName": "oem90.inf",
+        "DeviceID": "ACPI\\QCOM0D04\\0"
+      },
+      {
+        "DeviceName": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C64\\0"
+      },
+      {
+        "DeviceName": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C63\\0"
+      },
+      {
+        "DeviceName": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C62\\0"
+      },
+      {
+        "DeviceName": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C61\\0"
+      },
+      {
+        "DeviceName": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C60\\0"
+      },
+      {
+        "DeviceName": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C5F\\0"
+      },
+      {
+        "DeviceName": "Qualcomm ADC Temperature Monitor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C5E\\0"
+      },
+      {
+        "DeviceName": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C5A\\64"
+      },
+      {
+        "DeviceName": "Qualcomm WLAN Limits Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CFC\\0"
+      },
+      {
+        "DeviceName": "Qualcomm Modem skin Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CF9\\0"
+      },
+      {
+        "DeviceName": "Qualcomm Modem BCL Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CFB\\0"
+      },
+      {
+        "DeviceName": "Qualcomm NSP limits Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CF8\\0"
+      },
+      {
+        "DeviceName": "Qualcomm GPU limits Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CF7\\0"
+      },
+      {
+        "DeviceName": "Qualcomm CPU DCVS Cluster 2 Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CF6\\0"
+      },
+      {
+        "DeviceName": "Qualcomm CPU DCVS Cluster 1 Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CF5\\0"
+      },
+      {
+        "DeviceName": "Qualcomm CPU DCVS Cluster 0 Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CF4\\0"
+      },
+      {
+        "DeviceName": "Qualcomm CPU DCVS Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CF3\\0"
+      },
+      {
+        "DeviceName": "Qualcomm CPU Core parking Policy Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CF2\\0"
+      },
+      {
+        "DeviceName": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0CBF\\1"
+      },
+      {
+        "DeviceName": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C91\\0"
+      },
+      {
+        "DeviceName": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0D01\\1"
+      },
+      {
+        "DeviceName": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0D01\\0"
+      },
+      {
+        "DeviceName": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C59\\1"
+      },
+      {
+        "DeviceName": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C59\\0"
+      },
+      {
+        "DeviceName": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C58\\1"
+      },
+      {
+        "DeviceName": "Qualcomm Temperature Sensor Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\QCOM0C58\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) USB Type-C Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4338.2200",
+        "DriverDate": "/Date(1748822400000)/",
+        "InfName": "oem126.inf",
+        "DeviceID": "ACPI\\QCOM0CA4\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) USB4(TM) Host Router Bus",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem229.inf",
+        "DeviceID": "ACPI\\QCOM0C6D\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) All-Ways Aware(TM) Sensor Platform Device",
+        "Manufacturer": "Qualcomm",
+        "DriverVersion": "6982.1.0.0",
+        "DriverDate": "/Date(1724716800000)/",
+        "InfName": "oem346.inf",
+        "DeviceID": "ACPI\\MSHW0474\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) All-Ways Aware(TM) Sensor Platform Device",
+        "Manufacturer": "Qualcomm",
+        "DriverVersion": "6982.1.0.0",
+        "DriverDate": "/Date(1724716800000)/",
+        "InfName": "oem346.inf",
+        "DeviceID": "ACPI\\MSHW0473\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) EVA Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4237.8400",
+        "DriverDate": "/Date(1739664000000)/",
+        "InfName": "oem51.inf",
+        "DeviceID": "ACPI\\QCOM0CF1\\1E"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Spectra(TM) 395 SecureISP Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4422.300",
+        "DriverDate": "/Date(1757030400000)/",
+        "InfName": "oem222.inf",
+        "DeviceID": "ACPI\\QCOM0CCC\\19"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Spectra(TM) 695 ISP Camera Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4422.300",
+        "DriverDate": "/Date(1757030400000)/",
+        "InfName": "oem261.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C25&SUBSYS_CRD08380&REV_0000\\16"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Spectra(TM) 695 ISP Camera JPEG Encoder Device",
+        "Manufacturer": "Qualcomm",
+        "DriverVersion": "1.0.4422.300",
+        "DriverDate": "/Date(1757030400000)/",
+        "InfName": "oem263.inf",
+        "DeviceID": "ACPI\\QCOM0C33\\17"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Spectra(TM) 695 ISP Camera MipiCsi Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4422.300",
+        "DriverDate": "/Date(1757030400000)/",
+        "InfName": "oem269.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C98&SUBSYS_CRD08380&REV_0000\\18"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Spectra(TM) 695 ISP Camera Flash Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4422.300",
+        "DriverDate": "/Date(1757030400000)/",
+        "InfName": "oem260.inf",
+        "DeviceID": "ACPI\\QCOM0C27\\19"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Spectra(TM) 695 ISP Camera Auxiliary Sensor Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4422.301",
+        "DriverDate": "/Date(1759708800000)/",
+        "InfName": "oem287.inf",
+        "DeviceID": "ACPI\\VEN_SMO&DEV_55F0&SUBSYS_MSHW0472&REV_0000\\1C"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Spectra(TM) 695 ISP Camera Front Sensor Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4422.301",
+        "DriverDate": "/Date(1759708800000)/",
+        "InfName": "oem293.inf",
+        "DeviceID": "ACPI\\VEN_OVTI&DEV_02C1&SUBSYS_MSHW0470&REV_0000\\1A"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Spectra(TM) 695 ISP Camera Platform Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4422.300",
+        "DriverDate": "/Date(1757030400000)/",
+        "InfName": "oem273.inf",
+        "DeviceID": "ACPI\\QCOM0C32\\1B"
+      },
+      {
+        "DeviceName": "Qualcomm(R) DCF Device",
+        "Manufacturer": "Qualcomm",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem29.inf",
+        "DeviceID": "ACPI\\QCOM06E7\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) SSG Secure Services Device",
+        "Manufacturer": "Qualcomm",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem206.inf",
+        "DeviceID": "ACPI\\QCOM06D8\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Subsys Thermal Mitigation Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem57.inf",
+        "DeviceID": "ACPI\\QCOM0CD5\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) SOC Partition Interface Device",
+        "Manufacturer": "Qualcomm Technologies Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem194.inf",
+        "DeviceID": "ACPI\\QCOM06DD\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) System Manager Device",
+        "Manufacturer": "Qualcomm",
+        "DriverVersion": "1.0.4111.7400",
+        "DriverDate": "/Date(1725235200000)/",
+        "InfName": "oem48.inf",
+        "DeviceID": "ACPI\\QCOM0CA8\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem94.inf",
+        "DeviceID": "ACPI\\QCOM0C88\\2"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem94.inf",
+        "DeviceID": "ACPI\\QCOM0C88\\1"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem94.inf",
+        "DeviceID": "ACPI\\QCOM0C88\\0"
+      },
+      {
+        "DeviceName": "ACPI Processor Container Device",
+        "Manufacturer": "(Standard system devices)",
+        "DriverVersion": "10.0.26100.1",
+        "DriverDate": "/Date(1150848000000)/",
+        "InfName": "machine.inf",
+        "DeviceID": "ACPI\\ACPI0010\\12"
+      },
+      {
+        "DeviceName": "ACPI Processor Container Device",
+        "Manufacturer": "(Standard system devices)",
+        "DriverVersion": "10.0.26100.1",
+        "DriverDate": "/Date(1150848000000)/",
+        "InfName": "machine.inf",
+        "DeviceID": "ACPI\\ACPI0010\\11"
+      },
+      {
+        "DeviceName": "ACPI Processor Container Device",
+        "Manufacturer": "(Standard system devices)",
+        "DriverVersion": "10.0.26100.1",
+        "DriverDate": "/Date(1150848000000)/",
+        "InfName": "machine.inf",
+        "DeviceID": "ACPI\\ACPI0010\\10"
+      },
+      {
+        "DeviceName": "ACPI Processor Container Device",
+        "Manufacturer": "(Standard system devices)",
+        "DriverVersion": "10.0.26100.1",
+        "DriverDate": "/Date(1150848000000)/",
+        "InfName": "machine.inf",
+        "DeviceID": "ACPI\\ACPI0010\\100000"
+      },
+      {
+        "DeviceName": "Qualcomm Secure Processor Device",
+        "Manufacturer": "Qualcomm Technologies Inc.",
+        "DriverVersion": "1.0.4338.2200",
+        "DriverDate": "/Date(1748822400000)/",
+        "InfName": "oem113.inf",
+        "DeviceID": "ACPI\\QCOM0C87\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Snapdragon(R) X Plus - X1P64100 - Qualcomm(R) Hexagon(TM) NPU",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "30.0.219.1000",
+        "DriverDate": "/Date(1762646400000)/",
+        "InfName": "oem276.inf",
+        "DeviceID": "ACPI\\QCOM0D0A\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Audio RPC Daemon Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4338.2200",
+        "DriverDate": "/Date(1748822400000)/",
+        "InfName": "oem75.inf",
+        "DeviceID": "ACPI\\QCOM0C82\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) FastRPC Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4338.2200",
+        "DriverDate": "/Date(1748822400000)/",
+        "InfName": "oem26.inf",
+        "DeviceID": "ACPI\\QCOM0C5C\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm Shared Memory Port Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4219.5800",
+        "DriverDate": "/Date(1737763200000)/",
+        "InfName": "oem93.inf",
+        "DeviceID": "ACPI\\QCOM0C84\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Data IPC Router Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem154.inf",
+        "DeviceID": "ACPI\\QCOM0C0D\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) FastConnect(TM) 7800 Mobile Connectivity System",
+        "Manufacturer": "Qualcomm Communications Inc.",
+        "DriverVersion": "1.0.4374.1300",
+        "DriverDate": "/Date(1752451200000)/",
+        "InfName": "oem115.inf",
+        "DeviceID": "PCI\\VEN_17CB&DEV_1107&SUBSYS_110717CB&REV_01\\4&CDACDEC&0&0000"
+      },
+      {
+        "DeviceName": "Qualcomm(R) PCIe Platform Extension Plugin",
+        "Manufacturer": "(Standard system devices)",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem183.inf",
+        "DeviceID": "ACPI\\QCOM0C96\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Inter Processor Communication Interrupt Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem152.inf",
+        "DeviceID": "ACPI\\QCOM06C2\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) System Manager GPIO Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem95.inf",
+        "DeviceID": "ACPI\\QCOM0C0C\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) SPMI Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem202.inf",
+        "DeviceID": "ACPI\\QCOM0C0B\\1"
+      },
+      {
+        "DeviceName": "Qualcomm(R) System Manager Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4338.2200",
+        "DriverDate": "/Date(1748822400000)/",
+        "InfName": "oem119.inf",
+        "DeviceID": "ACPI\\QCOM04DE\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) System Manager Secapp Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4338.2200",
+        "DriverDate": "/Date(1748822400000)/",
+        "InfName": "oem110.inf",
+        "DeviceID": "ACPI\\QCOM0CE4\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) System Manager SCM Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem187.inf",
+        "DeviceID": "ACPI\\QCOM04DD\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Spectra(TM) 695 ISP Camera AVStream Device",
+        "Manufacturer": "Qualcomm",
+        "DriverVersion": "1.0.4422.301",
+        "DriverDate": "/Date(1759708800000)/",
+        "InfName": "oem288.inf",
+        "DeviceID": "DISPLAY\\QCOM_AVSTREAM_8380\\3&5E9CBA8&0&UID32768"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Display Services",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4227.8600",
+        "DriverDate": "/Date(1737763200000)/",
+        "InfName": "oem277.inf",
+        "DeviceID": "SWD\\DRIVERENUM\\{17712798-2541-1623-4249-157167142812}#QCDPPSLIBRARY&3&5E9CBA8&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Adreno(TM) X1-85 GPU",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "31.0.112.0",
+        "DriverDate": "/Date(1748822400000)/",
+        "InfName": "oem213.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C36&SUBSYS_IDP08380&REV_008A\\0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) IOMMU Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem137.inf",
+        "DeviceID": "ACPI\\QCOM068F\\1"
+      },
+      {
+        "DeviceName": "Qualcomm(R) IOMMU Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem137.inf",
+        "DeviceID": "ACPI\\QCOM068F\\0"
+      },
+      {
+        "DeviceName": "Qualcomm System MMU Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem192.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C09&SUBSYS_CRD08380&REV_0002\\1"
+      },
+      {
+        "DeviceName": "Qualcomm System MMU Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem192.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C09&SUBSYS_CRD08380&REV_0002\\0"
+      },
+      {
+        "DeviceName": "Qualcomm System Cache Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem209.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C83&SUBSYS_CRD08380&REV_0002\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Secure Kernel Extension",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4293.7000",
+        "DriverDate": "/Date(1744848000000)/",
+        "InfName": "oem112.inf",
+        "DeviceID": "ACPI\\QCOM0CAC\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) TFTP Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "DriverVersion": "1.0.4237.8400",
+        "DriverDate": "/Date(1739664000000)/",
+        "InfName": "oem212.inf",
+        "DeviceID": "ACPI\\QCOM06DC\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm Secure Processor Subsystem Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "DriverVersion": "2.0.4478.2200",
+        "DriverDate": "/Date(1762646400000)/",
+        "InfName": "oem240.inf",
+        "DeviceID": "ACPI\\QCOM0C8D\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Subsys Base Thermal Mitigation Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem57.inf",
+        "DeviceID": "ACPI\\QCOM06E5\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Subsys Thermal Mitigation Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem57.inf",
+        "DeviceID": "ACPI\\QCOM0CC3\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm Compute DSP Subsystem Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "DriverVersion": "2.0.4478.2200",
+        "DriverDate": "/Date(1762646400000)/",
+        "InfName": "oem240.inf",
+        "DeviceID": "ACPI\\QCOM0CB0\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Protection Domain Service Registry Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem157.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_06DF&SUBSYS_CRD08380&REV_0008\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm Subsystem Dependency Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "DriverVersion": "2.0.4478.2200",
+        "DriverDate": "/Date(1762646400000)/",
+        "InfName": "oem240.inf",
+        "DeviceID": "ACPI\\QCOM0C20\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm ASD Audio Proxy APO",
+        "Manufacturer": "QUALCOMM",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744070400000)/",
+        "InfName": "oem182.inf",
+        "DeviceID": "SWD\\DRIVERENUM\\ASDPROXYAPO&6&1288D27E&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device",
+        "Manufacturer": "Microsoft",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744070400000)/",
+        "InfName": "oem176.inf",
+        "DeviceID": "QCASD\\STATICENDPOINTDEVICE0\\5&24050019&0&0"
+      },
+      {
+        "DeviceName": "Qualcomm ASD Audio Proxy APO",
+        "Manufacturer": "QUALCOMM",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744070400000)/",
+        "InfName": "oem182.inf",
+        "DeviceID": "SWD\\DRIVERENUM\\ASDPROXYAPO&5&24050019&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Aqstic(TM) ACX Audio Device",
+        "Manufacturer": "Microsoft",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744070400000)/",
+        "InfName": "oem176.inf",
+        "DeviceID": "ADCM\\VEN_QCOM&DEV_0CE6&SUBSYS_MSHW0462&REV_0A\\4&2A777998&0&1"
+      },
+      {
+        "DeviceName": "Qualcomm Audio Proxy APO",
+        "Manufacturer": "QUALCOMM",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744070400000)/",
+        "InfName": "oem200.inf",
+        "DeviceID": "SWD\\DRIVERENUM\\{F5E603DE-5801-48AD-83F2-9E0666B0A340}#PROXYAPO&6&11D9B152&0"
+      },
+      {
+        "DeviceName": "Qualcomm Audio Proxy APO",
+        "Manufacturer": "QUALCOMM",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744070400000)/",
+        "InfName": "oem200.inf",
+        "DeviceID": "SWD\\DRIVERENUM\\PROXYAPO&6&11D9B152&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Aqstic(TM) Audio Adapter Device",
+        "Manufacturer": "Microsoft",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744070400000)/",
+        "InfName": "oem210.inf",
+        "DeviceID": "AUCD\\VEN_QCOM&DEV_0C29&SUBSYS_MSHW0462&REV_0A\\5&2A32BB88&0&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Aqstic(TM)",
+        "Manufacturer": "(Standard system devices)",
+        "DriverVersion": "1.0.4338.2200",
+        "DriverDate": "/Date(1748822400000)/",
+        "InfName": "oem186.inf",
+        "DeviceID": "ADCM\\VEN_QCOM&DEV_0CC1&SUBSYS_MSHW0462&REV_0A\\4&2A777998&0&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Aqstic(TM) Audio DSP and Calibration Manager",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744848000000)/",
+        "InfName": "oem25.inf",
+        "DeviceID": "ADSP\\VEN_QCOM&DEV_0C22&SUBSYS_MSHW0462&REV_0A\\3&D1F2880&0&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Slimbus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem191.inf",
+        "DeviceID": "ADSP\\VEN_QCOM&DEV_0C0F&SUBSYS_MSHW0462&REV_0A\\3&D1F2880&0&0"
+      },
+      {
+        "DeviceName": "Qualcomm Audio DSP Subsystem Device",
+        "Manufacturer": "Qualcomm Technologies, Incorporated",
+        "DriverVersion": "2.0.4478.2200",
+        "DriverDate": "/Date(1762646400000)/",
+        "InfName": "oem240.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C1B&SUBSYS_MSHW0462&REV_000A\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) System Manager Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4216.6600",
+        "DriverDate": "/Date(1736640000000)/",
+        "InfName": "oem44.inf",
+        "DeviceID": "ACPI\\QCOM0C2F\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Peripheral Image Loader Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744070400000)/",
+        "InfName": "oem99.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_06E0&SUBSYS_CRD08380&REV_0008\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Reset Power Error Notifier Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem185.inf",
+        "DeviceID": "ACPI\\QCOM06E1\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem217.inf",
+        "DeviceID": "ACPI\\QCOM0C16\\16"
+      },
+      {
+        "DeviceName": "Qualcomm(R) SPI Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem201.inf",
+        "DeviceID": "ACPI\\QCOM0C0E\\14"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem217.inf",
+        "DeviceID": "ACPI\\QCOM0C16\\F"
+      },
+      {
+        "DeviceName": "Qualcomm(R) SPI Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem201.inf",
+        "DeviceID": "ACPI\\QCOM0C0E\\B"
+      },
+      {
+        "DeviceName": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem134.inf",
+        "DeviceID": "ACPI\\QCOM0C10\\9"
+      },
+      {
+        "DeviceName": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem134.inf",
+        "DeviceID": "ACPI\\QCOM0C10\\8"
+      },
+      {
+        "DeviceName": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem134.inf",
+        "DeviceID": "ACPI\\QCOM0C10\\6"
+      },
+      {
+        "DeviceName": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem134.inf",
+        "DeviceID": "ACPI\\QCOM0C10\\5"
+      },
+      {
+        "DeviceName": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem134.inf",
+        "DeviceID": "ACPI\\QCOM0C10\\4"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Bus Device",
+        "Manufacturer": "Qualcomm Technologies, Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem217.inf",
+        "DeviceID": "ACPI\\QCOM0C16\\3"
+      },
+      {
+        "DeviceName": "Qualcomm(R) I2C Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem134.inf",
+        "DeviceID": "ACPI\\QCOM0C10\\1"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Bam Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem155.inf",
+        "DeviceID": "ACPI\\QCOM0C0A\\5"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Bam Bus Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem155.inf",
+        "DeviceID": "ACPI\\QCOM0C0A\\1"
+      },
+      {
+        "DeviceName": "Qualcomm Power Engine Plug-in Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4196.6900",
+        "DriverDate": "/Date(1734393600000)/",
+        "InfName": "oem164.inf",
+        "DeviceID": "ACPI\\VEN_QCOM&DEV_0C17&SUBSYS_CRD08380&REV_008A\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Power Management PMIC GLink Device",
+        "Manufacturer": "Qualcomm Incorporated",
+        "DriverVersion": "1.0.4175.2700",
+        "DriverDate": "/Date(1732060800000)/",
+        "InfName": "oem178.inf",
+        "DeviceID": "ACPI\\QCOM0C8E\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Power Management FGBCL Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem58.inf",
+        "DeviceID": "ACPI\\QCOM0C77\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Power Management PMIC Apps Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4281.8500",
+        "DriverDate": "/Date(1744070400000)/",
+        "InfName": "oem108.inf",
+        "DeviceID": "ACPI\\QCOM0C2C\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) System Manager PMIC GPIO Framework Extension Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem181.inf",
+        "DeviceID": "ACPI\\QCOM0C2D\\1"
+      },
+      {
+        "DeviceName": "Qualcomm(R) Power Management PMIC Device",
+        "Manufacturer": "Qualcomm Inc.",
+        "DriverVersion": "1.0.4166.1200",
+        "DriverDate": "/Date(1730851200000)/",
+        "InfName": "oem170.inf",
+        "DeviceID": "ACPI\\QCOM0C2B\\2&DABA3FF&0"
+      },
+      {
+        "DeviceName": "Qualcomm(R) ACPI Bridge Device",
+        "Manufacturer": "Qualcomm Technologies Inc.",
+        "DriverVersion": "1.0.4160.6000",
+        "DriverDate": "/Date(1730160000000)/",
+        "InfName": "oem4.inf",
+        "DeviceID": "ACPI\\QCOM0427\\0"
+      }
+    ],
+    "signed_driver_candidates_raw": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "Get-CimInstance Win32_PnPSignedDriver | Where-Object { $_.DeviceName -match 'Qualcomm|Hexagon|NPU|Neural|AI|HTP|QNN|Snapdragon' -or $_.Manufacturer -match 'Qualcomm' } | Select-Object DeviceName,Manufacturer,DriverVersion,DriverDate,InfName,DeviceID | ConvertTo-Json -Compress"
+      ],
+      "rc": 0,
+      "stdout": "[{\"DeviceName\":\"Microsoft Input Configuration Device\",\"Manufacturer\":\"Microsoft\",\"DriverVersion\":\"10.0.26100.1\",\"DriverDate\":\"\\/Date(1150848000000)\\/\",\"InfName\":\"mtconfig.inf\",\"DeviceID\":\"HID\\\\MSHW0238\\u0026COL07\\\\3\\u0026868ECB2\\u00260\\u00260006\"},{\"DeviceName\":\"Qualcomm(R) Analog-to-Digital Converter Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem13.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C11\\\\0\"},{\"DeviceName\":\"Qualcomm FastConnect 7800 Dual Bluetooth Adapter\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4422.300\",\"DriverDate\":\"\\/Date(1757030400000)\\/\",\"InfName\":\"oem107.inf\",\"DeviceID\":\"QCA_SHB\\\\UART_H4_HMT\\\\3\\u00262DBA09C2\\u00260\\u00264097\"},{\"DeviceName\":\"Qualcomm(R) Bluetooth UART Transport Driver\",\"Manufacturer\":\"Qualcomm Atheros Communications Inc.\",\"DriverVersion\":\"1.0.4374.1301\",\"DriverDate\":\"\\/Date(1752624000000)\\/\",\"InfName\":\"oem77.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C6B\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Aqstic(TM) BT ACX Transport Device\",\"Manufacturer\":\"QUALCOMM\",\"DriverVersion\":\"1.0.4357.100\",\"DriverDate\":\"\\/Date(1750636800000)\\/\",\"InfName\":\"oem90.inf\",\"DeviceID\":\"ACPI\\\\QCOM0D04\\\\0\"},{\"DeviceName\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C64\\\\0\"},{\"DeviceName\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C63\\\\0\"},{\"DeviceName\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C62\\\\0\"},{\"DeviceName\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C61\\\\0\"},{\"DeviceName\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C60\\\\0\"},{\"DeviceName\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C5F\\\\0\"},{\"DeviceName\":\"Qualcomm ADC Temperature Monitor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C5E\\\\0\"},{\"DeviceName\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C5A\\\\64\"},{\"DeviceName\":\"Qualcomm WLAN Limits Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CFC\\\\0\"},{\"DeviceName\":\"Qualcomm Modem skin Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CF9\\\\0\"},{\"DeviceName\":\"Qualcomm Modem BCL Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CFB\\\\0\"},{\"DeviceName\":\"Qualcomm NSP limits Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CF8\\\\0\"},{\"DeviceName\":\"Qualcomm GPU limits Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CF7\\\\0\"},{\"DeviceName\":\"Qualcomm CPU DCVS Cluster 2 Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CF6\\\\0\"},{\"DeviceName\":\"Qualcomm CPU DCVS Cluster 1 Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CF5\\\\0\"},{\"DeviceName\":\"Qualcomm CPU DCVS Cluster 0 Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CF4\\\\0\"},{\"DeviceName\":\"Qualcomm CPU DCVS Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CF3\\\\0\"},{\"DeviceName\":\"Qualcomm CPU Core parking Policy Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CF2\\\\0\"},{\"DeviceName\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CBF\\\\1\"},{\"DeviceName\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C91\\\\0\"},{\"DeviceName\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0D01\\\\1\"},{\"DeviceName\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0D01\\\\0\"},{\"DeviceName\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C59\\\\1\"},{\"DeviceName\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C59\\\\0\"},{\"DeviceName\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C58\\\\1\"},{\"DeviceName\":\"Qualcomm Temperature Sensor Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C58\\\\0\"},{\"DeviceName\":\"Qualcomm(R) USB Type-C Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4338.2200\",\"DriverDate\":\"\\/Date(1748822400000)\\/\",\"InfName\":\"oem126.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CA4\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) USB4(TM) Host Router Bus\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem229.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C6D\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) All-Ways Aware(TM) Sensor Platform Device\",\"Manufacturer\":\"Qualcomm\",\"DriverVersion\":\"6982.1.0.0\",\"DriverDate\":\"\\/Date(1724716800000)\\/\",\"InfName\":\"oem346.inf\",\"DeviceID\":\"ACPI\\\\MSHW0474\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) All-Ways Aware(TM) Sensor Platform Device\",\"Manufacturer\":\"Qualcomm\",\"DriverVersion\":\"6982.1.0.0\",\"DriverDate\":\"\\/Date(1724716800000)\\/\",\"InfName\":\"oem346.inf\",\"DeviceID\":\"ACPI\\\\MSHW0473\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) EVA Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4237.8400\",\"DriverDate\":\"\\/Date(1739664000000)\\/\",\"InfName\":\"oem51.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CF1\\\\1E\"},{\"DeviceName\":\"Qualcomm(R) Spectra(TM) 395 SecureISP Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4422.300\",\"DriverDate\":\"\\/Date(1757030400000)\\/\",\"InfName\":\"oem222.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CCC\\\\19\"},{\"DeviceName\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4422.300\",\"DriverDate\":\"\\/Date(1757030400000)\\/\",\"InfName\":\"oem261.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C25\\u0026SUBSYS_CRD08380\\u0026REV_0000\\\\16\"},{\"DeviceName\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera JPEG Encoder Device\",\"Manufacturer\":\"Qualcomm\",\"DriverVersion\":\"1.0.4422.300\",\"DriverDate\":\"\\/Date(1757030400000)\\/\",\"InfName\":\"oem263.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C33\\\\17\"},{\"DeviceName\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera MipiCsi Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4422.300\",\"DriverDate\":\"\\/Date(1757030400000)\\/\",\"InfName\":\"oem269.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C98\\u0026SUBSYS_CRD08380\\u0026REV_0000\\\\18\"},{\"DeviceName\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera Flash Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4422.300\",\"DriverDate\":\"\\/Date(1757030400000)\\/\",\"InfName\":\"oem260.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C27\\\\19\"},{\"DeviceName\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera Auxiliary Sensor Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4422.301\",\"DriverDate\":\"\\/Date(1759708800000)\\/\",\"InfName\":\"oem287.inf\",\"DeviceID\":\"ACPI\\\\VEN_SMO\\u0026DEV_55F0\\u0026SUBSYS_MSHW0472\\u0026REV_0000\\\\1C\"},{\"DeviceName\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera Front Sensor Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4422.301\",\"DriverDate\":\"\\/Date(1759708800000)\\/\",\"InfName\":\"oem293.inf\",\"DeviceID\":\"ACPI\\\\VEN_OVTI\\u0026DEV_02C1\\u0026SUBSYS_MSHW0470\\u0026REV_0000\\\\1A\"},{\"DeviceName\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera Platform Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4422.300\",\"DriverDate\":\"\\/Date(1757030400000)\\/\",\"InfName\":\"oem273.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C32\\\\1B\"},{\"DeviceName\":\"Qualcomm(R) DCF Device\",\"Manufacturer\":\"Qualcomm\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem29.inf\",\"DeviceID\":\"ACPI\\\\QCOM06E7\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) SSG Secure Services Device\",\"Manufacturer\":\"Qualcomm\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem206.inf\",\"DeviceID\":\"ACPI\\\\QCOM06D8\\\\0\"},{\"DeviceName\":\"Qualcomm(R) Subsys Thermal Mitigation Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem57.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CD5\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) SOC Partition Interface Device\",\"Manufacturer\":\"Qualcomm Technologies Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem194.inf\",\"DeviceID\":\"ACPI\\\\QCOM06DD\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) System Manager Device\",\"Manufacturer\":\"Qualcomm\",\"DriverVersion\":\"1.0.4111.7400\",\"DriverDate\":\"\\/Date(1725235200000)\\/\",\"InfName\":\"oem48.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CA8\\\\0\"},{\"DeviceName\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem94.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C88\\\\2\"},{\"DeviceName\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem94.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C88\\\\1\"},{\"DeviceName\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem94.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C88\\\\0\"},{\"DeviceName\":\"ACPI Processor Container Device\",\"Manufacturer\":\"(Standard system devices)\",\"DriverVersion\":\"10.0.26100.1\",\"DriverDate\":\"\\/Date(1150848000000)\\/\",\"InfName\":\"machine.inf\",\"DeviceID\":\"ACPI\\\\ACPI0010\\\\12\"},{\"DeviceName\":\"ACPI Processor Container Device\",\"Manufacturer\":\"(Standard system devices)\",\"DriverVersion\":\"10.0.26100.1\",\"DriverDate\":\"\\/Date(1150848000000)\\/\",\"InfName\":\"machine.inf\",\"DeviceID\":\"ACPI\\\\ACPI0010\\\\11\"},{\"DeviceName\":\"ACPI Processor Container Device\",\"Manufacturer\":\"(Standard system devices)\",\"DriverVersion\":\"10.0.26100.1\",\"DriverDate\":\"\\/Date(1150848000000)\\/\",\"InfName\":\"machine.inf\",\"DeviceID\":\"ACPI\\\\ACPI0010\\\\10\"},{\"DeviceName\":\"ACPI Processor Container Device\",\"Manufacturer\":\"(Standard system devices)\",\"DriverVersion\":\"10.0.26100.1\",\"DriverDate\":\"\\/Date(1150848000000)\\/\",\"InfName\":\"machine.inf\",\"DeviceID\":\"ACPI\\\\ACPI0010\\\\100000\"},{\"DeviceName\":\"Qualcomm Secure Processor Device\",\"Manufacturer\":\"Qualcomm Technologies Inc.\",\"DriverVersion\":\"1.0.4338.2200\",\"DriverDate\":\"\\/Date(1748822400000)\\/\",\"InfName\":\"oem113.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C87\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Snapdragon(R) X Plus - X1P64100 - Qualcomm(R) Hexagon(TM) NPU\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"30.0.219.1000\",\"DriverDate\":\"\\/Date(1762646400000)\\/\",\"InfName\":\"oem276.inf\",\"DeviceID\":\"ACPI\\\\QCOM0D0A\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Audio RPC Daemon Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4338.2200\",\"DriverDate\":\"\\/Date(1748822400000)\\/\",\"InfName\":\"oem75.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C82\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) FastRPC Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4338.2200\",\"DriverDate\":\"\\/Date(1748822400000)\\/\",\"InfName\":\"oem26.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C5C\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm Shared Memory Port Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4219.5800\",\"DriverDate\":\"\\/Date(1737763200000)\\/\",\"InfName\":\"oem93.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C84\\\\0\"},{\"DeviceName\":\"Qualcomm(R) Data IPC Router Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem154.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C0D\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) FastConnect(TM) 7800 Mobile Connectivity System\",\"Manufacturer\":\"Qualcomm Communications Inc.\",\"DriverVersion\":\"1.0.4374.1300\",\"DriverDate\":\"\\/Date(1752451200000)\\/\",\"InfName\":\"oem115.inf\",\"DeviceID\":\"PCI\\\\VEN_17CB\\u0026DEV_1107\\u0026SUBSYS_110717CB\\u0026REV_01\\\\4\\u0026CDACDEC\\u00260\\u00260000\"},{\"DeviceName\":\"Qualcomm(R) PCIe Platform Extension Plugin\",\"Manufacturer\":\"(Standard system devices)\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem183.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C96\\\\0\"},{\"DeviceName\":\"Qualcomm(R) Inter Processor Communication Interrupt Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem152.inf\",\"DeviceID\":\"ACPI\\\\QCOM06C2\\\\0\"},{\"DeviceName\":\"Qualcomm(R) System Manager GPIO Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem95.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C0C\\\\0\"},{\"DeviceName\":\"Qualcomm(R) SPMI Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem202.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C0B\\\\1\"},{\"DeviceName\":\"Qualcomm(R) System Manager Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4338.2200\",\"DriverDate\":\"\\/Date(1748822400000)\\/\",\"InfName\":\"oem119.inf\",\"DeviceID\":\"ACPI\\\\QCOM04DE\\\\0\"},{\"DeviceName\":\"Qualcomm(R) System Manager Secapp Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4338.2200\",\"DriverDate\":\"\\/Date(1748822400000)\\/\",\"InfName\":\"oem110.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CE4\\\\0\"},{\"DeviceName\":\"Qualcomm(R) System Manager SCM Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem187.inf\",\"DeviceID\":\"ACPI\\\\QCOM04DD\\\\0\"},{\"DeviceName\":\"Qualcomm(R) Spectra(TM) 695 ISP Camera AVStream Device\",\"Manufacturer\":\"Qualcomm\",\"DriverVersion\":\"1.0.4422.301\",\"DriverDate\":\"\\/Date(1759708800000)\\/\",\"InfName\":\"oem288.inf\",\"DeviceID\":\"DISPLAY\\\\QCOM_AVSTREAM_8380\\\\3\\u00265E9CBA8\\u00260\\u0026UID32768\"},{\"DeviceName\":\"Qualcomm(R) Display Services\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4227.8600\",\"DriverDate\":\"\\/Date(1737763200000)\\/\",\"InfName\":\"oem277.inf\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\{17712798-2541-1623-4249-157167142812}#QCDPPSLIBRARY\\u00263\\u00265E9CBA8\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Adreno(TM) X1-85 GPU\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"31.0.112.0\",\"DriverDate\":\"\\/Date(1748822400000)\\/\",\"InfName\":\"oem213.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C36\\u0026SUBSYS_IDP08380\\u0026REV_008A\\\\0\"},{\"DeviceName\":\"Qualcomm(R) IOMMU Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem137.inf\",\"DeviceID\":\"ACPI\\\\QCOM068F\\\\1\"},{\"DeviceName\":\"Qualcomm(R) IOMMU Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem137.inf\",\"DeviceID\":\"ACPI\\\\QCOM068F\\\\0\"},{\"DeviceName\":\"Qualcomm System MMU Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem192.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C09\\u0026SUBSYS_CRD08380\\u0026REV_0002\\\\1\"},{\"DeviceName\":\"Qualcomm System MMU Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem192.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C09\\u0026SUBSYS_CRD08380\\u0026REV_0002\\\\0\"},{\"DeviceName\":\"Qualcomm System Cache Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem209.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C83\\u0026SUBSYS_CRD08380\\u0026REV_0002\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Secure Kernel Extension\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4293.7000\",\"DriverDate\":\"\\/Date(1744848000000)\\/\",\"InfName\":\"oem112.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CAC\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) TFTP Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"DriverVersion\":\"1.0.4237.8400\",\"DriverDate\":\"\\/Date(1739664000000)\\/\",\"InfName\":\"oem212.inf\",\"DeviceID\":\"ACPI\\\\QCOM06DC\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm Secure Processor Subsystem Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"DriverVersion\":\"2.0.4478.2200\",\"DriverDate\":\"\\/Date(1762646400000)\\/\",\"InfName\":\"oem240.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C8D\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Subsys Base Thermal Mitigation Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem57.inf\",\"DeviceID\":\"ACPI\\\\QCOM06E5\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Subsys Thermal Mitigation Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem57.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CC3\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm Compute DSP Subsystem Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"DriverVersion\":\"2.0.4478.2200\",\"DriverDate\":\"\\/Date(1762646400000)\\/\",\"InfName\":\"oem240.inf\",\"DeviceID\":\"ACPI\\\\QCOM0CB0\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Protection Domain Service Registry Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem157.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_06DF\\u0026SUBSYS_CRD08380\\u0026REV_0008\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm Subsystem Dependency Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"DriverVersion\":\"2.0.4478.2200\",\"DriverDate\":\"\\/Date(1762646400000)\\/\",\"InfName\":\"oem240.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C20\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm ASD Audio Proxy APO\",\"Manufacturer\":\"QUALCOMM\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744070400000)\\/\",\"InfName\":\"oem182.inf\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\ASDPROXYAPO\\u00266\\u00261288D27E\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device\",\"Manufacturer\":\"Microsoft\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744070400000)\\/\",\"InfName\":\"oem176.inf\",\"DeviceID\":\"QCASD\\\\STATICENDPOINTDEVICE0\\\\5\\u002624050019\\u00260\\u00260\"},{\"DeviceName\":\"Qualcomm ASD Audio Proxy APO\",\"Manufacturer\":\"QUALCOMM\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744070400000)\\/\",\"InfName\":\"oem182.inf\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\ASDPROXYAPO\\u00265\\u002624050019\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Aqstic(TM) ACX Audio Device\",\"Manufacturer\":\"Microsoft\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744070400000)\\/\",\"InfName\":\"oem176.inf\",\"DeviceID\":\"ADCM\\\\VEN_QCOM\\u0026DEV_0CE6\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\4\\u00262A777998\\u00260\\u00261\"},{\"DeviceName\":\"Qualcomm Audio Proxy APO\",\"Manufacturer\":\"QUALCOMM\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744070400000)\\/\",\"InfName\":\"oem200.inf\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\{F5E603DE-5801-48AD-83F2-9E0666B0A340}#PROXYAPO\\u00266\\u002611D9B152\\u00260\"},{\"DeviceName\":\"Qualcomm Audio Proxy APO\",\"Manufacturer\":\"QUALCOMM\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744070400000)\\/\",\"InfName\":\"oem200.inf\",\"DeviceID\":\"SWD\\\\DRIVERENUM\\\\PROXYAPO\\u00266\\u002611D9B152\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Aqstic(TM) Audio Adapter Device\",\"Manufacturer\":\"Microsoft\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744070400000)\\/\",\"InfName\":\"oem210.inf\",\"DeviceID\":\"AUCD\\\\VEN_QCOM\\u0026DEV_0C29\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\5\\u00262A32BB88\\u00260\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Aqstic(TM)\",\"Manufacturer\":\"(Standard system devices)\",\"DriverVersion\":\"1.0.4338.2200\",\"DriverDate\":\"\\/Date(1748822400000)\\/\",\"InfName\":\"oem186.inf\",\"DeviceID\":\"ADCM\\\\VEN_QCOM\\u0026DEV_0CC1\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\4\\u00262A777998\\u00260\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Aqstic(TM) Audio DSP and Calibration Manager\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744848000000)\\/\",\"InfName\":\"oem25.inf\",\"DeviceID\":\"ADSP\\\\VEN_QCOM\\u0026DEV_0C22\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\3\\u0026D1F2880\\u00260\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Slimbus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem191.inf\",\"DeviceID\":\"ADSP\\\\VEN_QCOM\\u0026DEV_0C0F\\u0026SUBSYS_MSHW0462\\u0026REV_0A\\\\3\\u0026D1F2880\\u00260\\u00260\"},{\"DeviceName\":\"Qualcomm Audio DSP Subsystem Device\",\"Manufacturer\":\"Qualcomm Technologies, Incorporated\",\"DriverVersion\":\"2.0.4478.2200\",\"DriverDate\":\"\\/Date(1762646400000)\\/\",\"InfName\":\"oem240.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C1B\\u0026SUBSYS_MSHW0462\\u0026REV_000A\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) System Manager Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4216.6600\",\"DriverDate\":\"\\/Date(1736640000000)\\/\",\"InfName\":\"oem44.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C2F\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Peripheral Image Loader Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744070400000)\\/\",\"InfName\":\"oem99.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_06E0\\u0026SUBSYS_CRD08380\\u0026REV_0008\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Reset Power Error Notifier Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem185.inf\",\"DeviceID\":\"ACPI\\\\QCOM06E1\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem217.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C16\\\\16\"},{\"DeviceName\":\"Qualcomm(R) SPI Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem201.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C0E\\\\14\"},{\"DeviceName\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem217.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C16\\\\F\"},{\"DeviceName\":\"Qualcomm(R) SPI Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem201.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C0E\\\\B\"},{\"DeviceName\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem134.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\9\"},{\"DeviceName\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem134.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\8\"},{\"DeviceName\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem134.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\6\"},{\"DeviceName\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem134.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\5\"},{\"DeviceName\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem134.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\4\"},{\"DeviceName\":\"Qualcomm(R) Bus Device\",\"Manufacturer\":\"Qualcomm Technologies, Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem217.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C16\\\\3\"},{\"DeviceName\":\"Qualcomm(R) I2C Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem134.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C10\\\\1\"},{\"DeviceName\":\"Qualcomm(R) Bam Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem155.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C0A\\\\5\"},{\"DeviceName\":\"Qualcomm(R) Bam Bus Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem155.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C0A\\\\1\"},{\"DeviceName\":\"Qualcomm Power Engine Plug-in Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4196.6900\",\"DriverDate\":\"\\/Date(1734393600000)\\/\",\"InfName\":\"oem164.inf\",\"DeviceID\":\"ACPI\\\\VEN_QCOM\\u0026DEV_0C17\\u0026SUBSYS_CRD08380\\u0026REV_008A\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Power Management PMIC GLink Device\",\"Manufacturer\":\"Qualcomm Incorporated\",\"DriverVersion\":\"1.0.4175.2700\",\"DriverDate\":\"\\/Date(1732060800000)\\/\",\"InfName\":\"oem178.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C8E\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Power Management FGBCL Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem58.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C77\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) Power Management PMIC Apps Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4281.8500\",\"DriverDate\":\"\\/Date(1744070400000)\\/\",\"InfName\":\"oem108.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C2C\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) System Manager PMIC GPIO Framework Extension Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem181.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C2D\\\\1\"},{\"DeviceName\":\"Qualcomm(R) Power Management PMIC Device\",\"Manufacturer\":\"Qualcomm Inc.\",\"DriverVersion\":\"1.0.4166.1200\",\"DriverDate\":\"\\/Date(1730851200000)\\/\",\"InfName\":\"oem170.inf\",\"DeviceID\":\"ACPI\\\\QCOM0C2B\\\\2\\u0026DABA3FF\\u00260\"},{\"DeviceName\":\"Qualcomm(R) ACPI Bridge Device\",\"Manufacturer\":\"Qualcomm Technologies Inc.\",\"DriverVersion\":\"1.0.4160.6000\",\"DriverDate\":\"\\/Date(1730160000000)\\/\",\"InfName\":\"oem4.inf\",\"DeviceID\":\"ACPI\\\\QCOM0427\\\\0\"}]",
+      "stderr": ""
+    }
+  },
+  "python_runtime": {
+    "onnxruntime": {
+      "installed": false,
+      "error": "ModuleNotFoundError(\"No module named 'onnxruntime'\")"
+    },
+    "onnxruntime_qnn": {
+      "installed": false,
+      "error": "ModuleNotFoundError(\"No module named 'onnxruntime_qnn'\")"
+    }
+  },
+  "artifact": null,
+  "recommendation": {
+    "host_class": "Windows ARM64 Snapdragon-class host",
+    "runtime_path": "Prefer onnxruntime + onnxruntime-qnn plugin path, unless artifact metadata requires older built-in provider flow.",
+    "artifact_path": "Prefer Qualcomm AI Hub/HF precompiled_qnn_onnx for this exact chipset.",
+    "next_proof": [
+      "Install exact onnxruntime version required by artifact metadata.",
+      "Install exact onnxruntime-qnn version required by artifact metadata.",
+      "No artifact directory inspected. Add --artifact <path> once downloaded."
+    ],
+    "blocking_findings": []
+  }
+}
